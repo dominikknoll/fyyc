@@ -4,7 +4,7 @@
 		var $sql = false;
 		var $wpdb = false;
 		
-		function Tiles($wpdb, $siteType, $selector = false) {
+		function Tiles($wpdb, $siteType = false, $selector = false) {
 			
 			$this->wpdb = $wpdb;
 			$this->createSQL($siteType, $selector);
@@ -18,6 +18,36 @@
 			$this->feedData = $this->wpdb->get_results($this->sql);
 	
 		}
+		
+		function addFeed($id, $type, $title = false, $content = false) {
+		
+			$x = (object) array('post_id'	  =>$id, 
+								'post_type'   =>$type,
+								'post_title'  =>$title,
+								'post_content'=>$content
+								);
+			
+			if($this->feedData == false){
+				
+				$arr = array(0 => $x);
+				$this->feedData = $arr;
+				
+			}
+			else{
+				$count = count($this->feedData);
+				$count ++;
+				
+				$arr = array($count => $x);
+				
+				$this->feedData = array_merge($this->feedData, $arr);
+			}
+
+		}
+		
+		function printTest(){
+			print_r($this->feedData);
+		}
+
 		
 		function getTiles() {
 			return $this->feedData;
@@ -49,6 +79,10 @@
 				break;
 				case 'galerie':
 					$this->generateGalerie($index);
+				break;
+				
+				case 'intro':
+					$this->generateIntro($index);
 				break;
 				
 				
@@ -331,6 +365,31 @@
 							</div>
 						</div>
 						
+					</div>
+				</div>
+			';
+			return true;
+		}
+		
+		function generateIntro($index){
+
+		// Load
+			$id	  	   = $this->feedData[$index]->post_id;
+			$user	   = $this->feedData[$index]->post_title;
+			$content   = $this->feedData[$index]->post_content;
+			
+			$content = colorupText($content);
+
+		// Edit		
+
+
+			
+		// Print
+			echo'
+				<div class="item introTile">
+
+					<div class="content">
+						Hallo ich bin Content '.$content.'
 					</div>
 				</div>
 			';

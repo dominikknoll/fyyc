@@ -31,7 +31,7 @@
 		
 		
 		
-		<div class="container containerDesktop">
+		<div class="container containerIsotope">
 			<div id="isotope">
 				<?php
 					foreach ($feed->getTiles() as $index => $value) {

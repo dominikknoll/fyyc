@@ -13,6 +13,30 @@
 			include("wp-content/themes/fyyc/plugins/multiplePostThumbnails/multi-post-thumbnails.php");
 
 			$feed = new Tiles($wpdb, "menschen");
+			
+			if ( have_posts() ) {
+				while ( have_posts() ) {
+					the_post(); 
+					$the_content = get_the_content();
+					$the_title = get_the_title();
+				} 
+			}
+			
+			$staticMenschenFeed = new Tiles($wpdb);	
+			$staticMenschenFeed->addFeed(313, "intro", false, $the_content);
+			$staticMenschenFeed->addFeed(313, "conact", $the_title);
+			$staticMenschenFeed->addFeed(313, "linkedin");
+
+
+			
+			
+			$staticMenschenFeed->printTest();
+			
+			print_r($feed->getTiles());
+			
+			the_content();
+			
+			//print_r($feed->getTiles());
 		?>
 	
 	</head>
@@ -22,22 +46,29 @@
 			<div class="container">	
 				<?php include 'html/buildHeader.php'; ?>	
 			</div>
-			<img src="wp-content/themes/fyyc/img/img.jpg">
+			<div class="imageContainer">
+				<img src="wp-content/themes/fyyc/img/img.jpg">
+			</div>
 		</header>
 
 
 		<div class="container containerDesktop test">
 			<div id="isotope">
 				<?php
+				
+					foreach ($staticMenschenFeed->getTiles() as $index => $value) {
+						$staticMenschenFeed->printTile($index, false);
+					}
+					
 					foreach ($feed->getTiles() as $index => $value) {
 						$feed->printTile($index, false);
 					}
 					$i=0;
 					
-					//while($i<100){
-						//$feed->generateCrap();
-					//	$i++;
-					//}
+					while($i<100){
+						$feed->generateCrap();
+						$i++;
+					}
 					
 				?>
 			</div>

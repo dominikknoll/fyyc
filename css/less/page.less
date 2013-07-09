@@ -1,3 +1,14 @@
+.box-shadowNavi (@x: 0; @y: 0; @blur: 3px; @color: #aaa) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}
+
+.navi-inner{
+	.box-shadowNavi(0px; 0px);
+
+}
+
 header{
 	background: none;
 

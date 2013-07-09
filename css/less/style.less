@@ -1,3 +1,11 @@
+.box-shadow (@x: 0; @y: 0; @blur: 3px; @color: #888) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}
+
+
+
 body{
 	background-color: #dddddd;
 }
@@ -8,60 +16,97 @@ body{
 	padding: 0px;
 }
 
-.container {
-	position: relative;
-}
+
 
 header{
 	background: url("img/backgroundFrontpage.jpg") repeat-x bottom;
 	background-color: white;
 	max-height: 600px;
     overflow: hidden;
-    
-    img{
-    	display: block;
 
+	.container{
+		
+		.navbar{
+			position: absolute;
+			width: 100%;
+			z-index: 1000;
+			padding-top:30px;
+			opacity: 0.90;
+			
+			.navbar-inner{
+				background-color: white;
+				padding-top: 3px;
+			
+			}
+			.navbar-shadow{
+				background: url("img/navibg.png") no-repeat scroll center 0px;
+			
+			}
+		}
+	}
+	
+
+	
+	.hero-unit{
+		margin-top: 95px;
+
+		color: #999999;
+		background-color: white;
+		font-size: 48px;
+		line-height: 61px;
+		padding: 30px;
+		text-align: justify;
+		text-align: left;
+		
+		.btn{
+			margin-left: 25%;
+			padding-left: 30px;
+			padding-right: 30px;
+		}	
+
+	}
+
+	
+    .imageContainer{
+    	display: block;
+	    margin-left: auto;
+	    margin-right: auto;
+	    max-width: 1280px;
+	    min-height: 600px;
+    
+	   img{
+    	display: block;
 	    margin-left: auto !important;
 	    margin-right: auto !important;
+	    max-width: inherit;
+		} 	
     }
 
 }
+
+
+.container {
+	position: relative;
+}
    
-.navbar{
-	position: absolute;
-	width: 100%;
-	z-index: 1000;
-	padding-top:30px;
-	opacity: 0.85;
-
-}
 
 
-.hero-unit{
-	margin-top: 50px;
-	.btn{
-		margin-left: 25%;
-		padding-left: 30px;
-		padding-right: 30px;
-	}
-	
-	
-}
+
 
 .test{
-	margin-top: -128px;
+	margin-top: -93px;
 }
+
+
 
 .item{
 	width: 300px;
 	height: 150px;
 	background-color: orange;
-	margin:10px;
+	margin:15px;
 }
 
-.container{
-	//width: 970px !important;
-}
+
 
 @media (min-width: 768px) and (max-width: 979px) {
 	.item{
@@ -78,41 +123,16 @@ header{
 	}
 }
 
-
-.box-shadow (@x: 0; @y: 0; @blur: 3px; @color: #888) {
-  box-shadow: @arguments;
-  -moz-box-shadow: @arguments;
-  -webkit-box-shadow: @arguments;
-}
-
-.hero-unit{
-	color: #999999;
-	background-color: white;
-	font-size: 48px;
-	line-height: 61px;
-	padding: 25px;
-		text-align: justify;
-
-	text-align: left;	
-
-	.subtitle{
-		font-size: 16px;
-	}
+.containerIsotope{
+	width: 990px;
 }
 
 
-.navbar-inner{
-	background-color: white;
-}
-.navbar-shadow{
-	background: url("img/navibg.png") no-repeat scroll center 0px;
 
-}
+
 
 
 .item{
-
-
 	background-color: white;
 	height: auto;
 	.box-shadow(0px; 0px);
@@ -121,6 +141,7 @@ header{
 	.top{
 		margin: 30px;
 		margin-bottom: 15px;
+		margin-top: 25px;
 
 		.tag{
 			font-weight: bold;
@@ -216,7 +237,6 @@ header{
 	}
 	
 	.content{
-		font-size: 14px;
 		color: #aaaaaa;
 	}
 	
@@ -247,6 +267,13 @@ header{
 	
 }
 
+.introTile{
+	.content{
+		font-size: 18px;
+
+	}
+}
+
 .videoTile{
 	.top{
 		.tag{
@@ -263,7 +290,6 @@ header{
 	}
 	
 	.content{
-		font-size: 14px;
 		color: #aaaaaa;
 	}
 	
