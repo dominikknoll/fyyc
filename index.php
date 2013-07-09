@@ -7,42 +7,46 @@
 		<?php wp_head(); ?>
 		
 		<?php			
-			include("wp-content/themes/foryouandyourcustomers/php/Tiles.php");	
-			include("wp-content/themes/foryouandyourcustomers/plugins/multiplePostThumbnails/multi-post-thumbnails.php");
+			include("wp-content/themes/fyyc/php/Tiles.php");	
+			include("wp-content/themes/fyyc/plugins/multiplePostThumbnails/multi-post-thumbnails.php");
 
-			$feed = new Tiles($wpdb);
+			$feed = new Tiles($wpdb, "frontpage");
 		?>
 	
 	</head>
 	
 	<body>
-
-		<div class="container">
-			<?php include 'html/buildHeader.php'; ?>	
-		</div>
-		<div class="container">
-			<?php include 'html/buildHero.php'; ?>	
-		</div>
-		
-		
-		<div class="content_color">
-			<div class="container containerDesktop">
-				<div id="isotope">
-					<?php
-						foreach ($feed->getTiles() as $index => $value) {
-							$feed->printTile($index, false);
-						}
-						$i=0;
-						
-						//while($i<100){
-							//$feed->generateCrap();
-						//	$i++;
-						//}
-						
-					?>
-				</div>
-
+		<header>
+			<div class="container">	
+				<?php include 'html/buildHeader.php'; ?>	
+				<?php include 'html/buildHero.php'; ?>	
 			</div>
+		</header>
+
+			
+			
+			
+		
+		
+		
+		
+		
+		<div class="container containerDesktop">
+			<div id="isotope">
+				<?php
+					foreach ($feed->getTiles() as $index => $value) {
+						$feed->printTile($index, false);
+					}
+					$i=0;
+					
+					//while($i<100){
+						//$feed->generateCrap();
+					//	$i++;
+					//}
+					
+				?>
+			</div>
+
 		</div>
 		
 		<?php //include 'buildFooter.php'; ?>

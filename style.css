@@ -1,15 +1,42 @@
 body {
-  background-color: white;
+  background-color: #dddddd;
 }
 .nav li a {
   color: black !important;
   font-weight: 500;
   padding: 0px;
 }
+.container {
+  position: relative;
+}
+header {
+  background: url("img/backgroundFrontpage.jpg") repeat-x bottom;
+  background-color: white;
+  max-height: 600px;
+  overflow: hidden;
+}
+header img {
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.navbar {
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  padding-top: 30px;
+  opacity: 0.85;
+}
+.hero-unit {
+  margin-top: 50px;
+}
 .hero-unit .btn {
   margin-left: 25%;
   padding-left: 30px;
   padding-right: 30px;
+}
+.test {
+  margin-top: -128px;
 }
 .item {
   width: 300px;
@@ -43,13 +70,8 @@ body {
 .hero-unit .subtitle {
   font-size: 16px;
 }
-.content_color {
-  background: url("img/backgroundFrontpage.jpg") repeat-x;
-  background-color: #dddddd;
-  padding-top: 50px;
-}
 .navbar-inner {
-  background: url("img/navibg.jpg") no-repeat scroll center 20px;
+  background-color: white;
 }
 .item {
   background-color: white;

@@ -4,10 +4,10 @@
 		var $sql = false;
 		var $wpdb = false;
 		
-		function Tiles($wpdb) {
+		function Tiles($wpdb, $siteType, $selector = false) {
 			
 			$this->wpdb = $wpdb;
-			$this->createSQL();
+			$this->createSQL($siteType, $selector);
 			$this->initFeed();
 		}
 		
@@ -418,8 +418,10 @@
 		
 		
 		
-		function createSQL() {
-			$this->sql = '
+		function createSQL($siteType, $selector) {
+			
+			if($siteType == "frontpage"){
+				$this->sql = '
 				SELECT 
 				posts.id as post_id, 
 				DATEDIFF(NOW(), posts.post_date)+1 as factor_date, 
@@ -485,6 +487,78 @@
 					LIMIT 80
 
 			';		
+			}
+			
+			else if($siteType == "menschen"){
+				$this->sql = '
+					SELECT 
+				posts.id as post_id, 
+				DATEDIFF(NOW(), posts.post_date)+1 as factor_date, 
+				(
+					select meta_value 
+						from foryouandyourcustomers.wp_postmeta as meta_priority 
+					WHERE meta_priority.post_id = posts.id AND meta_priority.meta_key = "postPriority"
+				) as factor_priority_name,
+				(SELECT ranking.value from foryouandyourcustomers.wp_addon_ranking as ranking WHERE ranking.type = factor_priority_name) as factor_priority_value,
+				posts.post_type as factor_type_name,
+				(SELECT ranking.value from foryouandyourcustomers.wp_addon_ranking as ranking WHERE ranking.type = posts.post_type) as factor_type_value,
+				posts.post_type,
+				posts.post_title as post_title,
+				posts.post_content as post_content,
+				"false" as "meta_link"
+				
+				
+				FROM foryouandyourcustomers.wp_posts as posts
+				
+				WHERE posts.id IN (
+					SELECT id as frontpage_id
+						FROM foryouandyourcustomers.wp_posts as posts
+						WHERE posts.id in (
+							SELECT meta.post_id
+							FROM foryouandyourcustomers.wp_postmeta as meta
+							WHERE meta.meta_key = "postTarget" AND meta.meta_value LIKE "dok"
+						)
+					)
+					AND posts.post_status = "publish"
+
+				UNION			
+				
+				SELECT 
+				posts.id as post_id, 
+				DATEDIFF(NOW(), posts.posted)+1 as factor_date,
+				(
+					select meta_value 
+						from foryouandyourcustomers.wp_twitterfeed_meta as meta_priority 
+					WHERE meta_priority.twitter_id = posts.id AND meta_priority.meta_key = "postPriority"
+				) as factor_priority_name,
+				(SELECT ranking.value from foryouandyourcustomers.wp_addon_ranking as ranking WHERE ranking.type = factor_priority_name) as factor_priority_value,
+				posts.type as factor_type_name,
+				(SELECT ranking.value from foryouandyourcustomers.wp_addon_ranking as ranking WHERE ranking.type = posts.type) as factor_type_value,
+				posts.type,
+				posts.username as post_title,
+				posts.content as post_content,
+				"false" as "meta_link"
+				
+				FROM foryouandyourcustomers.wp_twitterfeed as posts
+				
+				WHERE posts.id IN (
+					SELECT id as frontpage_id
+						FROM foryouandyourcustomers.wp_twitterfeed as posts
+						WHERE posts.id in (
+							SELECT meta.twitter_id
+							FROM foryouandyourcustomers.wp_twitterfeed_meta as meta
+							WHERE meta.meta_key = "postTarget" AND meta.meta_value LIKE "dok"
+						)
+					)
+				
+				
+					ORDER BY (factor_date * factor_priority_value * factor_type_value) ASC
+					LIMIT 80
+
+			';	
+				
+			}
+				
 		}
 		
 		

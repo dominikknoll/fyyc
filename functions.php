@@ -53,6 +53,7 @@ if (class_exists('MultiPostThumbnails')) {
 add_action ( 'load-post.php', 'add_events_metaboxes' );
 add_action ( 'load-post-new.php', 'add_events_metaboxes' );
 
+
 // Enable thumbnails
 
 add_theme_support( 'post-thumbnails' );
@@ -62,6 +63,9 @@ add_theme_support( 'post-thumbnails' );
 add_image_size('submedia', 140, 87, true);
 add_image_size( "tileImage", 300, 0, false );
 add_image_size( "tileImageRetina", 900, 0, false );
+
+add_image_size( "headerImage", 1280, 0, false );
+
 
 
 
@@ -407,9 +411,6 @@ function metadatenDownloads() {
 
 define('WP_POST_REVISIONS', false);
 
-?>
-
-<?php 
 
 function wpt_event_posttype() {
 
@@ -597,5 +598,7 @@ function wpt_event_posttype() {
 }
 
 
+
 add_action( 'init', 'wpt_event_posttype' );
+
 ?>

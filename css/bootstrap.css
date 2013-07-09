@@ -5968,8 +5968,4 @@ button.close {
   }
 }
 
-@media (min-width: 1400px ) {
-  .containerDesktop{
-	width: 1285px;	  
-  }
- }
+
