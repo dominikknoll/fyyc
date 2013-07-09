@@ -36,6 +36,8 @@ header{
 			.navbar-inner{
 				background-color: white;
 				padding-top: 3px;
+				padding-left: 15px;
+				padding-right: 15px;
 			
 			}
 			.navbar-shadow{
@@ -59,9 +61,14 @@ header{
 		text-align: left;
 		
 		.btn{
+			margin-top: 35px;
 			margin-left: 25%;
-			padding-left: 30px;
-			padding-right: 30px;
+			height: 40px;
+			width: 240px;
+			font-size: 14px;
+			font-weight: bold;
+			
+			
 		}	
 
 	}
@@ -87,6 +94,11 @@ header{
 
 .container {
 	position: relative;
+	width: 940px;
+}
+
+.containerIsotope{
+	width: 960px;
 }
    
 
@@ -103,11 +115,16 @@ header{
 	width: 300px;
 	height: 150px;
 	background-color: orange;
-	margin:15px;
+	//margin:15px;
+	margin: 10px;
+}
+
+.introTile{
+	width: 620px;
 }
 
 
-
+/*
 @media (min-width: 768px) and (max-width: 979px) {
 	.item{
 	width: 330px;
@@ -122,9 +139,9 @@ header{
 	margin: 6px;
 	}
 }
-
+*/
 .containerIsotope{
-	width: 990px;
+//	width: 990px;
 }
 
 
@@ -133,6 +150,7 @@ header{
 
 
 .item{
+	
 	background-color: white;
 	height: auto;
 	.box-shadow(0px; 0px);
@@ -161,6 +179,7 @@ header{
 		}
 	}
 	.media{
+		padding-top: 5px;
 		img{
 			width: 100% !important;
 		}
@@ -171,14 +190,10 @@ header{
 			width: 140px;
 		}
 	}	
-	
-	
-	
-	
 	.content{
 		margin: 30px;
 		margin-top: 16px;
-		margin-bottom: 16px;
+		margin-bottom: 20px;
 
 		font-size: 14px;
 		color: #aaaaaa;
@@ -188,16 +203,19 @@ header{
 		}
 	}
 	.footer{
+		margin-top: 16px;
 		padding-bottom: 10px;
 		
 		.share{
-			background: url("img/shareArrow.png") repeat scroll center;	
+			background: url("img/shareArrow.png") no-repeat scroll center;	
 			width: 37px;
 			height: 41px;
+			padding-left: 30px;
+			
 			
 			.shareCount{
-				padding-top: 15px;
-				padding-left: 35px;
+				padding-top: 12px;
+				padding-left: 20px;
 				color: #bbbbbb;
 				
 			}
@@ -244,15 +262,10 @@ header{
 		padding-bottom: 10px;
 		
 		.share{
-			background: url("img/shareArrow.png") repeat scroll center;	
-			width: 37px;
-			height: 41px;
+
 			
 			.shareCount{
-				padding-top: 15px;
-				padding-left: 35px;
-				color: #bbbbbb;
-				
+
 			}
 		
 	}
@@ -268,11 +281,59 @@ header{
 }
 
 .introTile{
+	
 	.content{
+		margin: 30px;
+
 		font-size: 18px;
+		line-height: 24px;
 
 	}
 }
+
+.contactTile{
+	.top{
+		margin-top: 0px;
+		.title{
+			color: black;
+		}
+		.subtitle{
+			padding-top: 0;
+		}
+	}
+	
+	
+	.content{
+		margin-top: 25px;
+		margin-bottom: 25px;
+
+		p{
+			color: #999999;
+			margin: 0px;
+			margin-top: 8px;
+			padding-left: 25px;
+			
+		}
+		.mail{
+				color: black;
+				background: url("img/icons/mail.jpg")	no-repeat left center ;
+				background-position: 0px 6px;
+				
+			}
+		.mail:hover{
+				text-decoration: underline;
+		}
+		
+		.phone{
+			background: url("img/icons/phone.jpg")	no-repeat left center;	
+		}
+		.skype{
+			background: url("img/icons/skype.jpg")	no-repeat left center;	
+		}
+
+	}
+}
+
 
 .videoTile{
 	.top{
@@ -302,14 +363,10 @@ header{
 		padding-bottom: 10px;
 		
 		.share{
-			background: url("img/shareArrow.png") repeat scroll center;	
-			width: 37px;
-			height: 41px;
+
 			
 			.shareCount{
-				padding-top: 15px;
-				padding-left: 35px;
-				color: #bbbbbb;
+
 				
 			}
 		
@@ -325,8 +382,37 @@ header{
 	
 }
 
+.veranstaltungsTile{
+	background: url("img/tileIcons/veranstaltung.jpg") no-repeat scroll left top;	
+	background-position: 30px 20px;
+	background-color: white;
+	
+	.top{
+		.tag{
+			padding-left: 38px;	
+		}
+		margin-bottom: 5px;
 
-.blogTile{
+		
+	}		
+	.content{
+		p{
+			margin-bottom: 2px;
+		}
+	}
+}
+
+.postTile{
+	background: url("img/tileIcons/blog.jpg") no-repeat scroll left top;	
+	background-position: 30px 20px;
+	background-color: white;
+	
+	.top{
+		.tag{
+			padding-left: 35px;	
+		}
+	}
+	
 	.media{
 		img{
 			width: 100% !important;

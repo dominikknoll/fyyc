@@ -13,26 +13,19 @@
 			include("wp-content/themes/fyyc/plugins/multiplePostThumbnails/multi-post-thumbnails.php");
 
 			$feed = new Tiles($wpdb, "menschen");
-			
-			if ( have_posts() ) {
-				while ( have_posts() ) {
-					the_post(); 
-					$the_content = get_the_content();
-					$the_title = get_the_title();
-				} 
-			}
+
 			
 			$staticMenschenFeed = new Tiles($wpdb);	
-			$staticMenschenFeed->addFeed(313, "intro", false, $the_content);
-			$staticMenschenFeed->addFeed(313, "conact", $the_title);
-			$staticMenschenFeed->addFeed(313, "linkedin");
+			$staticMenschenFeed->addFeed(313, "intro");
+			$staticMenschenFeed->addFeed(313, "contact");
+			//$staticMenschenFeed->addFeed(313, "linkedin");
 
 
 			
 			
-			$staticMenschenFeed->printTest();
+			//$staticMenschenFeed->printTest();
 			
-			print_r($feed->getTiles());
+			//print_r($feed->getTiles());
 			
 			the_content();
 			
@@ -52,7 +45,7 @@
 		</header>
 
 
-		<div class="container containerDesktop test">
+		<div class="container containerIsotope test"> 
 			<div id="isotope">
 				<?php
 				
@@ -66,7 +59,7 @@
 					$i=0;
 					
 					while($i<100){
-						$feed->generateCrap();
+						//$feed->generateCrap();
 						$i++;
 					}
 					
@@ -83,13 +76,19 @@
 	
 	<script>
 
-		var jQuerycontainer = jQuery('#isotope');
-		jQuerycontainer.imagesLoaded( function(){
-		  jQuerycontainer.isotope({
-		  itemSelector: '.item',
-		  layoutMode : 'masonry'
-		   });	
-		});
+
+		
+		var $container = $('#isotope');
+		
+		$container.isotope({
+        itemSelector : '.item',
+        masonry : {
+          columnWidth : 10
+        },
+        masonryHorizontal : {
+          rowHeight: 10
+        }
+      });
 		
 		
 		$(document).ready(function() {

@@ -72,7 +72,7 @@
 					$this->generateVeranstaltung($index);
 				break;
 				case 'twitter':
-					$this->generateTwitter($index);
+					//$this->generateTwitter($index);
 				break;
 				case 'downloads':
 					$this->generateDownloads($index);
@@ -81,15 +81,21 @@
 					$this->generateGalerie($index);
 				break;
 				
+				
 				case 'intro':
 					$this->generateIntro($index);
 				break;
+				case 'contact':
+					$this->generateContact($index);
+				break;
+				
+				
 				
 				
 				default: 
-					echo("<div class='item'><div class='top'><div class='tag'>".$this->feedData[$index]->post_type);
-					if($debug) $this->debug($this->feedData[$index]);
-					echo("</div></div></div>");
+					//echo("<div class='item'><div class='top'><div class='tag'>".$this->feedData[$index]->post_type);
+					//if($debug) $this->debug($this->feedData[$index]);
+					//echo("</div></div></div>");
 				break;
 				
 			}
@@ -279,7 +285,6 @@
 			
 			$metadata = get_post_meta($id, false);
 				$tag = $metadata["tag"][0];
-				$subtitle = $metadata["subtitle"][0];
 				$content = $metadata["content"][0];
 				$time = $metadata["time"][0];
 				$place = $metadata["place"][0];
@@ -293,7 +298,7 @@
 
 		// Print
 			echo'
-				<div class="item veranstaltungrTile">
+				<div class="item veranstaltungsTile">
 					
 					<div class="top">
 						<div class="tag">
@@ -301,9 +306,6 @@
 						</div>
 						<div class="title hyphe">
 							'.$postTitle.'		
-						</div>
-						<div class="subtitle">
-							'.$subtitle.'		
 						</div>
 					</div>
 
@@ -371,31 +373,6 @@
 			return true;
 		}
 		
-		function generateIntro($index){
-
-		// Load
-			$id	  	   = $this->feedData[$index]->post_id;
-			$user	   = $this->feedData[$index]->post_title;
-			$content   = $this->feedData[$index]->post_content;
-			
-			$content = colorupText($content);
-
-		// Edit		
-
-
-			
-		// Print
-			echo'
-				<div class="item introTile">
-
-					<div class="content">
-						Hallo ich bin Content '.$content.'
-					</div>
-				</div>
-			';
-			return true;
-		}
-		
 		function generateDownloads($index){
 			
 			
@@ -454,6 +431,80 @@
 			 echo("</div></div>");
 			return true;
 		}		
+		
+		
+		function generateIntro($index){
+
+		// Load
+			$id	  	   = $this->feedData[$index]->post_id;
+			$metadata = get_post_meta($id, false);
+
+			$content = $metadata["content"][0];
+			
+			$content = colorupText($content);
+
+		// Edit		
+
+
+			
+		// Print
+			echo'
+				<div class="item introTile">
+
+					<div class="content">
+						'.$content.'
+					</div>
+				</div>
+			';
+			return true;
+		}
+		
+		function generateContact($index){
+
+		// Load
+			$id	  	   = $this->feedData[$index]->post_id;
+			$metadata = get_post_meta($id, false);
+
+			$vorname = $metadata["vorname"][0];
+			$nachname = $metadata["nachname"][0];
+			
+			$subtitle = $metadata["funktion"][0];
+			$phone 	  = $metadata["phone"][0];
+			$email 	  = $metadata["email"][0];
+			$skype 	  = $metadata["skype"][0];
+
+					
+			$content = colorupText($content);
+
+		// Edit		
+
+
+			
+		// Print
+			echo'
+				<div class="item contactTile">
+
+					<div class="top">
+						<div class="title">
+							'.$vorname.' '.$nachname.'	
+						</div>
+						<div class="subtitle">
+							'.$subtitle.'		
+						</div>
+					</div>
+					<div class="content hyphe">
+						<p class="mail">'.$email.'</p>
+						<p class="phone">'.$phone.'</p>
+						<p class="skype">'.$skype.'</p>
+	
+					</div>				
+			';
+			//print_r($metadata);
+			echo("</div>");
+			return true;
+		}
+		
+		
 		
 		function generateCrap(){
 			echo'

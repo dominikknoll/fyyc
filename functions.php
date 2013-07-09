@@ -114,10 +114,14 @@ function wpt_save_events_meta($post_id, $post) {
 	$events_meta['nachname'] 		= $_POST['nachname'];
 	$events_meta['email']		 	= $_POST['email'];
 	$events_meta['standort'] 	 	= $_POST['standort'];
+	$events_meta['phone'] 	 		= $_POST['phone'];
+
+	
 	
 	$events_meta['twitter']			= $_POST['twitter'];
 	$events_meta['instagram'] 		= $_POST['instagram'];
 	$events_meta['linkedin'] 	 	= $_POST['linkedin'];
+	$events_meta['skype'] 	 		= $_POST['skype'];
 	
 	$events_meta['funktion']		= $_POST['funktion'];
 	$events_meta['downloads'] 		= $_POST['downloads'];
@@ -223,6 +227,9 @@ function metadatenKontaktdatenMenschen() {
 	$nachname   = get_post_meta($post->ID, 'nachname', true);
 	$email		= get_post_meta($post->ID, 'email', true);
 	$standort	= get_post_meta($post->ID, 'standort', true);
+	$phone		= get_post_meta($post->ID, 'phone', true);
+
+
 
 	
 		echo '
@@ -245,6 +252,10 @@ function metadatenKontaktdatenMenschen() {
 					<td>Standort</td>
 					<td><input name="standort" value="' . $standort  . '"></td>
 				</tr>
+				<tr>
+					<td>Phone</td>
+					<td><input name="phone" value="' . $phone  . '"></td>
+				</tr>
 			</table>
 		'; 
 	}
@@ -258,6 +269,8 @@ function metadatenNetzwerkMenschen() {
 	$twitter  		 = get_post_meta($post->ID, 'twitter', true);
 	$instagram		 = get_post_meta($post->ID, 'instagram', true);
 	$linkedin		 = get_post_meta($post->ID, 'linkedin', true);
+	$skype			 = get_post_meta($post->ID, 'skype', true);
+
 
 
 	
@@ -275,7 +288,11 @@ function metadatenNetzwerkMenschen() {
 				<tr>
 					<td>LinkedIn</td>
 					<td><input name="linkedin" value="' . $linkedin  . '"></td>
-				</tr>
+			</tr>
+				<tr>
+					<td>skype</td>
+					<td><input name="skype" value="' . $skype  . '"></td>
+		skype		</tr>
 				
 			</table>
 		'; 

@@ -5,7 +5,8 @@
 	<head>
 		<?php get_header(); ?>
 		<?php wp_head(); ?>
-		
+		<link href="wp-content/themes/fyyc/frontpage.css" rel="stylesheet" media="screen">
+
 		<?php			
 			include("wp-content/themes/fyyc/php/Tiles.php");	
 			include("wp-content/themes/fyyc/plugins/multiplePostThumbnails/multi-post-thumbnails.php");
