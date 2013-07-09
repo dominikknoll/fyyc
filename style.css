@@ -73,6 +73,9 @@ header img {
 .navbar-inner {
   background-color: white;
 }
+.navbar-shadow {
+  background: url("img/navibg.png") no-repeat scroll center 0px;
+}
 .item {
   background-color: white;
   height: auto;
