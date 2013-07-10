@@ -17,6 +17,10 @@ body{
 }
 
 
+.media{
+	margin: 0px;
+	padding-top: 15px;
+}
 
 header{
 	background: url("img/backgroundFrontpage.jpg") repeat-x bottom;
@@ -80,12 +84,15 @@ header{
 	    margin-right: auto;
 	    max-width: 1280px;
 	    min-height: 600px;
+	   .box-shadow(0px; 0px);
+
     
 	   img{
     	display: block;
 	    margin-left: auto !important;
 	    margin-right: auto !important;
 	    max-width: inherit;
+
 		} 	
     }
 
@@ -94,11 +101,11 @@ header{
 
 .container {
 	position: relative;
-	width: 940px;
+	//width: 940px;
 }
 
 .containerIsotope{
-	width: 960px;
+	//width: 960px;
 }
    
 
@@ -114,9 +121,8 @@ header{
 .item{
 	width: 300px;
 	height: 150px;
-	background-color: orange;
 	//margin:15px;
-	margin: 10px;
+	margin: 5px 10px 5px 10px;
 }
 
 .introTile{
@@ -140,8 +146,12 @@ header{
 	}
 }
 */
+.container{
+	width: 940px;
+}
+
 .containerIsotope{
-//	width: 990px;
+	width: 960px;
 }
 
 
@@ -150,275 +160,234 @@ header{
 
 
 .item{
+	p{
+		margin: 0px;
+	}
 	
-	background-color: white;
 	height: auto;
-	.box-shadow(0px; 0px);
 	
-	
-	.top{
-		margin: 30px;
-		margin-bottom: 15px;
-		margin-top: 25px;
+	.main{
+		.box-shadow(0px; 0px);
+		background-color: white;
 
-		.tag{
-			font-weight: bold;
-			color: #73be46;	
-			text-transform: uppercase;
+
+		.top{
+			padding: 25px 30px 0px 30px;
+	
+			.tag{
+				font-weight: bold;
+				color: #73be46;	
+				text-transform: uppercase;
+			}
+			.title{
+				padding-top: 20px;
+				font-size: 24px;
+				line-height: 30px;
+				color: #999999;
+			}
+			.subtitle{
+				color: #666666;
+				font-size: 12px;
+			}
 		}
-		.title{
-			padding-top: 23px;
-			font-size: 24px;
-			line-height: 30px;
-			color: #999999;
+		.media{
+			img{
+				width: 100% !important;
+			}
 		}
-		.subtitle{
-			padding-top: 8px;
-			color: #666666;
-			font-size: 12px;
+		
+		.content{
+			padding: 15px 30px 0px 30px; 
+	
+			font-size: 14px;
+			color: #aaaaaa;
+			
+			a{
+				color: black;
+			}
+		}
+		.footer{
+			padding-top: 16px;
+			padding-bottom: 10px;
+			padding-left: 30px;
+			
+			.share{
+				background: url("img/shareArrow.png") no-repeat scroll;	
+				width: 37px;
+				height: 41px;
+				
+				
+				
+				.shareCount{
+					padding-top: 12px;
+					padding-left: 20px;
+					color: #bbbbbb;
+					
+				}
+			
+		}
+			.link{
+				background: url("img/arrowRightGreen.png") repeat scroll center;	
+				width: 37px;
+				height: 41px;
+				right: 0px;
+				position: absolute;
+			}	
 		}
 	}
+	.shadow{
+		background: url("img/tileShadow.png") no-repeat scroll 0px 0px;
+		width: 100%;
+		height: 10px;
+	}
+
+}
+
+
+.galerieTile{
 	.media{
-		padding-top: 5px;
+		padding-top: 30px;
 		img{
-			width: 100% !important;
+			
 		}
 	}
 	.submedia{
+		width: 304px;
 		img{
-			padding: 5px;
-			width: 140px;
+			padding-right: 4px;
+			padding-top: 4px;
+			width: 148px;
 		}
-	}	
-	.content{
-		margin: 30px;
-		margin-top: 16px;
-		margin-bottom: 20px;
-
-		font-size: 14px;
-		color: #aaaaaa;
-		
-		a{
-			color: black;
-		}
-	}
-	.footer{
-		margin-top: 16px;
-		padding-bottom: 10px;
-		
-		.share{
-			background: url("img/shareArrow.png") no-repeat scroll center;	
-			width: 37px;
-			height: 41px;
-			padding-left: 30px;
-			
-			
-			.shareCount{
-				padding-top: 12px;
-				padding-left: 20px;
-				color: #bbbbbb;
-				
-			}
-		
-	}
-		.link{
-			background: url("img/arrowRightGreen.png") repeat scroll center;	
-			width: 37px;
-			height: 41px;
-			right: 0px;
-			position: absolute;
-		}	
-	}
-
-}
-
-
-
-.teaserTile{
-	background-color: white;
-	height: auto;
-	.box-shadow(0px; 0px);
-	
-	.top{
-		.tag{
-			font-weight: bold;
-			color: #73be46;	
-		}
-		.title{
-		}
-
-	}
-	.media{
-		img{
-			width: 100% !important;
-		}
-	}
-	
-	.content{
-		color: #aaaaaa;
-	}
-	
-	.footer{
-		padding-bottom: 10px;
-		
-		.share{
-
-			
-			.shareCount{
-
-			}
-		
-	}
-		.link{
-			background: url("img/arrowRightGreen.png") repeat scroll center;	
-			width: 37px;
-			height: 41px;
-			right: 0px;
-			position: absolute;
-		}	
-	}
-	
-}
-
-.introTile{
-	
-	.content{
-		margin: 30px;
-
-		font-size: 18px;
-		line-height: 24px;
-
-	}
-}
-
-.contactTile{
-	.top{
-		margin-top: 0px;
-		.title{
-			color: black;
-		}
-		.subtitle{
-			padding-top: 0;
-		}
-	}
-	
-	
-	.content{
-		margin-top: 25px;
-		margin-bottom: 25px;
-
-		p{
-			color: #999999;
-			margin: 0px;
-			margin-top: 8px;
-			padding-left: 25px;
-			
-		}
-		.mail{
-				color: black;
-				background: url("img/icons/mail.jpg")	no-repeat left center ;
-				background-position: 0px 6px;
-				
-			}
-		.mail:hover{
-				text-decoration: underline;
-		}
-		
-		.phone{
-			background: url("img/icons/phone.jpg")	no-repeat left center;	
-		}
-		.skype{
-			background: url("img/icons/skype.jpg")	no-repeat left center;	
-		}
-
-	}
-}
-
-
-.videoTile{
-	.top{
-		.tag{
-			font-weight: bold;
-			color: #73be46;	
-		}
-		.title{
-
-		}
-		.subtitle{
-			color: #666666;
-			font-size: 12px;
-		}
-	}
-	
-	.content{
-		color: #aaaaaa;
-	}
-	
-	.media{
-		padding-bottom: 15px;
-		
-	}
-	
-	.footer{
-		padding-bottom: 10px;
-		
-		.share{
-
-			
-			.shareCount{
-
-				
-			}
-		
-	}
-		.link{
-			background: url("img/arrowRightGreen.png") repeat scroll center;	
-			width: 37px;
-			height: 41px;
-			right: 0px;
-			position: absolute;
-		}	
-	}
-	
-}
-
-.veranstaltungsTile{
-	background: url("img/tileIcons/veranstaltung.jpg") no-repeat scroll left top;	
-	background-position: 30px 20px;
-	background-color: white;
-	
-	.top{
-		.tag{
-			padding-left: 38px;	
-		}
-		margin-bottom: 5px;
-
-		
-	}		
-	.content{
-		p{
-			margin-bottom: 2px;
-		}
+		padding-bottom: 30px;
 	}
 }
 
 .postTile{
-	background: url("img/tileIcons/blog.jpg") no-repeat scroll left top;	
-	background-position: 30px 20px;
-	background-color: white;
-	
-	.top{
-		.tag{
-			padding-left: 35px;	
+		.main{
+			background: url("img/tileIcons/blog.jpg") no-repeat scroll left top;	
+		background-position: 30px 20px;
+		background-color: white;
+		
+		.top{
+			.tag{
+				padding-left: 35px;	
+			}
+			.subtitle{
+				padding-top: 5px;
+			}
 		}
 	}
+}
+
+.veranstaltungsTile{
+	.main{
+		background: url("img/tileIcons/veranstaltung.jpg") no-repeat scroll left top;	
+		background-position: 30px 20px;
+		background-color: white;
+		
+		.top{
+			.tag{
+				padding-left: 38px;	
+			}
 	
-	.media{
-		img{
-			width: 100% !important;
+			
+		}		
+		.content{
+			margin-top: 0px;
+			p{
+				font-size: 12px;
+			}
 		}
 	}
+
+}
+
+.videoTile{
+	.main{
+
+	}	
+}
+
+.contactTile{
+	.main{
+		.top{
+			margin-top: 0px;
+			.title{
+				color: black;
+				padding-top: 0px;
+			}
+			.subtitle{
+				padding-top: 2px;
+				border-bottom: solid 1px #dfdfdf;
+				padding-bottom: 10px;
+			}
+		}
+		
+		
+		.content{
+			padding-top: 5px;
+			padding-bottom: 20px;
+			p{
+				color: #999999;
+				margin: 0px;
+				margin-top: 8px;
+				padding-left: 25px;
+				
+			}
+			.mail{
+					color: black;
+					background: url("img/icons/mail.jpg")	no-repeat left center ;
+					background-position: 0px 6px;
+					
+				}
+			.mail:hover{
+					text-decoration: underline;
+			}
+			
+			.phone{
+				background: url("img/icons/phone.jpg")	no-repeat left center;	
+			}
+			.skype{
+				background: url("img/icons/skype.jpg")	no-repeat left center;	
+			}
+		}
+	}
+}
+
+.introTile{
+	.main{
+		.content{
+		padding: 30px;
+
+		font-size: 18px;
+		line-height: 24px;
+
+		}
+	}
+	.shadow{
+		background: url("img/tileShadowLarge.png") no-repeat scroll 0px 0px;
+	}
 	
+	
+}
+
+.downloadsTile{
+	.main{
+		.content{
+			padding-top: 0px;
+		}
+		background: url("img/tileIcons/downloads.jpg") no-repeat scroll left top;	
+		background-position: 30px 35px;
+		background-color: white;
+		padding-top: 30px;
+		padding-left: 45px;
+		p{
+			padding-bottom: 10px;
+			
+		}
+		padding-bottom: 10px;
+
+	}
 }
 
 

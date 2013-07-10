@@ -6,6 +6,10 @@ body {
   font-weight: 500;
   padding: 0px;
 }
+.media {
+  margin: 0px;
+  padding-top: 15px;
+}
 header {
   background: url("img/backgroundFrontpage.jpg") repeat-x bottom;
   background-color: white;
@@ -52,6 +56,9 @@ header .imageContainer {
   margin-right: auto;
   max-width: 1280px;
   min-height: 600px;
+  box-shadow: 0px 0px 3px #888888;
+  -moz-box-shadow: 0px 0px 3px #888888;
+  -webkit-box-shadow: 0px 0px 3px #888888;
 }
 header .imageContainer img {
   display: block;
@@ -61,10 +68,6 @@ header .imageContainer img {
 }
 .container {
   position: relative;
-  width: 940px;
-}
-.containerIsotope {
-  width: 960px;
 }
 .test {
   margin-top: -93px;
@@ -72,8 +75,7 @@ header .imageContainer img {
 .item {
   width: 300px;
   height: 150px;
-  background-color: orange;
-  margin: 10px;
+  margin: 5px 10px 5px 10px;
 }
 .introTile {
   width: 620px;
@@ -94,187 +96,172 @@ header .imageContainer img {
 	}
 }
 */
+.container {
+  width: 940px;
+}
+.containerIsotope {
+  width: 960px;
+}
 .item {
-  background-color: white;
   height: auto;
+}
+.item p {
+  margin: 0px;
+}
+.item .main {
   box-shadow: 0px 0px 3px #888888;
   -moz-box-shadow: 0px 0px 3px #888888;
   -webkit-box-shadow: 0px 0px 3px #888888;
+  background-color: white;
 }
-.item .top {
-  margin: 30px;
-  margin-bottom: 15px;
-  margin-top: 25px;
+.item .main .top {
+  padding: 25px 30px 0px 30px;
 }
-.item .top .tag {
+.item .main .top .tag {
   font-weight: bold;
   color: #73be46;
   text-transform: uppercase;
 }
-.item .top .title {
-  padding-top: 23px;
+.item .main .top .title {
+  padding-top: 20px;
   font-size: 24px;
   line-height: 30px;
   color: #999999;
 }
-.item .top .subtitle {
-  padding-top: 8px;
+.item .main .top .subtitle {
   color: #666666;
   font-size: 12px;
 }
-.item .media {
-  padding-top: 5px;
-}
-.item .media img {
+.item .main .media img {
   width: 100% !important;
 }
-.item .submedia img {
-  padding: 5px;
-  width: 140px;
-}
-.item .content {
-  margin: 30px;
-  margin-top: 16px;
-  margin-bottom: 20px;
+.item .main .content {
+  padding: 15px 30px 0px 30px;
   font-size: 14px;
   color: #aaaaaa;
 }
-.item .content a {
+.item .main .content a {
   color: black;
 }
-.item .footer {
-  margin-top: 16px;
+.item .main .footer {
+  padding-top: 16px;
   padding-bottom: 10px;
-}
-.item .footer .share {
-  background: url("img/shareArrow.png") no-repeat scroll center;
-  width: 37px;
-  height: 41px;
   padding-left: 30px;
 }
-.item .footer .share .shareCount {
+.item .main .footer .share {
+  background: url("img/shareArrow.png") no-repeat scroll;
+  width: 37px;
+  height: 41px;
+}
+.item .main .footer .share .shareCount {
   padding-top: 12px;
   padding-left: 20px;
   color: #bbbbbb;
 }
-.item .footer .link {
+.item .main .footer .link {
   background: url("img/arrowRightGreen.png") repeat scroll center;
   width: 37px;
   height: 41px;
   right: 0px;
   position: absolute;
 }
-.teaserTile {
+.item .shadow {
+  background: url("img/tileShadow.png") no-repeat scroll 0px 0px;
+  width: 100%;
+  height: 10px;
+}
+.galerieTile .media {
+  padding-top: 30px;
+}
+.galerieTile .submedia {
+  width: 304px;
+  padding-bottom: 30px;
+}
+.galerieTile .submedia img {
+  padding-right: 4px;
+  padding-top: 4px;
+  width: 148px;
+}
+.postTile .main {
+  background: url("img/tileIcons/blog.jpg") no-repeat scroll left top;
+  background-position: 30px 20px;
   background-color: white;
-  height: auto;
-  box-shadow: 0px 0px 3px #888888;
-  -moz-box-shadow: 0px 0px 3px #888888;
-  -webkit-box-shadow: 0px 0px 3px #888888;
 }
-.teaserTile .top .tag {
-  font-weight: bold;
-  color: #73be46;
+.postTile .main .top .tag {
+  padding-left: 35px;
 }
-.teaserTile .media img {
-  width: 100% !important;
+.postTile .main .top .subtitle {
+  padding-top: 5px;
 }
-.teaserTile .content {
-  color: #aaaaaa;
+.veranstaltungsTile .main {
+  background: url("img/tileIcons/veranstaltung.jpg") no-repeat scroll left top;
+  background-position: 30px 20px;
+  background-color: white;
 }
-.teaserTile .footer {
-  padding-bottom: 10px;
+.veranstaltungsTile .main .top .tag {
+  padding-left: 38px;
 }
-.teaserTile .footer .link {
-  background: url("img/arrowRightGreen.png") repeat scroll center;
-  width: 37px;
-  height: 41px;
-  right: 0px;
-  position: absolute;
-}
-.introTile .content {
-  margin: 30px;
-  font-size: 18px;
-  line-height: 24px;
-}
-.contactTile .top {
+.veranstaltungsTile .main .content {
   margin-top: 0px;
 }
-.contactTile .top .title {
+.veranstaltungsTile .main .content p {
+  font-size: 12px;
+}
+.contactTile .main .top {
+  margin-top: 0px;
+}
+.contactTile .main .top .title {
   color: black;
+  padding-top: 0px;
 }
-.contactTile .top .subtitle {
-  padding-top: 0;
+.contactTile .main .top .subtitle {
+  padding-top: 2px;
+  border-bottom: solid 1px #dfdfdf;
+  padding-bottom: 10px;
 }
-.contactTile .content {
-  margin-top: 25px;
-  margin-bottom: 25px;
+.contactTile .main .content {
+  padding-top: 5px;
+  padding-bottom: 20px;
 }
-.contactTile .content p {
+.contactTile .main .content p {
   color: #999999;
   margin: 0px;
   margin-top: 8px;
   padding-left: 25px;
 }
-.contactTile .content .mail {
+.contactTile .main .content .mail {
   color: black;
   background: url("img/icons/mail.jpg") no-repeat left center;
   background-position: 0px 6px;
 }
-.contactTile .content .mail:hover {
+.contactTile .main .content .mail:hover {
   text-decoration: underline;
 }
-.contactTile .content .phone {
+.contactTile .main .content .phone {
   background: url("img/icons/phone.jpg") no-repeat left center;
 }
-.contactTile .content .skype {
+.contactTile .main .content .skype {
   background: url("img/icons/skype.jpg") no-repeat left center;
 }
-.videoTile .top .tag {
-  font-weight: bold;
-  color: #73be46;
+.introTile .main .content {
+  padding: 30px;
+  font-size: 18px;
+  line-height: 24px;
 }
-.videoTile .top .subtitle {
-  color: #666666;
-  font-size: 12px;
+.introTile .shadow {
+  background: url("img/tileShadowLarge.png") no-repeat scroll 0px 0px;
 }
-.videoTile .content {
-  color: #aaaaaa;
-}
-.videoTile .media {
-  padding-bottom: 15px;
-}
-.videoTile .footer {
+.downloadsTile .main {
+  background: url("img/tileIcons/downloads.jpg") no-repeat scroll left top;
+  background-position: 30px 35px;
+  background-color: white;
+  padding-top: 30px;
+  padding-left: 45px;
   padding-bottom: 10px;
 }
-.videoTile .footer .link {
-  background: url("img/arrowRightGreen.png") repeat scroll center;
-  width: 37px;
-  height: 41px;
-  right: 0px;
-  position: absolute;
+.downloadsTile .main .content {
+  padding-top: 0px;
 }
-.veranstaltungsTile {
-  background: url("img/tileIcons/veranstaltung.jpg") no-repeat scroll left top;
-  background-position: 30px 20px;
-  background-color: white;
-}
-.veranstaltungsTile .top {
-  margin-bottom: 5px;
-}
-.veranstaltungsTile .top .tag {
-  padding-left: 38px;
-}
-.veranstaltungsTile .content p {
-  margin-bottom: 2px;
-}
-.postTile {
-  background: url("img/tileIcons/blog.jpg") no-repeat scroll left top;
-  background-position: 30px 20px;
-  background-color: white;
-}
-.postTile .top .tag {
-  padding-left: 35px;
-}
-.postTile .media img {
-  width: 100% !important;
+.downloadsTile .main p {
+  padding-bottom: 10px;
 }

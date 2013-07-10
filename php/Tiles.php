@@ -72,7 +72,7 @@
 					$this->generateVeranstaltung($index);
 				break;
 				case 'twitter':
-					//$this->generateTwitter($index);
+					$this->generateTwitter($index);
 				break;
 				case 'downloads':
 					$this->generateDownloads($index);
@@ -127,35 +127,38 @@
 		// Print 
 			echo'
 				<div class="item postTile">
-
-					<div class="top">
-					
-						<div class="tag">
-							Blog
-						</div>
-						<div class="title hyphe">
-							'.$postTitle.'		
-						</div>
-						<div class="subtitle">
-							'.get_the_date("l, F j, Y", $id).' by dok		
-						</div>
-					</div>	
-					<div class="media">						
-						<img src="'.$thumbnail[0].'" class="image">
-					</div>
-					<div class="footer">
-						<a href="'.$permalink.'">
-							<div class="link">
-								
-							</div>
-						</a>
-						<div class="share">
-							<div class="shareCount">
-								15
-							</div>
-						</div>
+					<div class="main">
+						<div class="top">
 						
+							<div class="tag">
+								Blog
+							</div>
+							<div class="title hyphe">
+								'.$postTitle.'		
+							</div>
+							<div class="subtitle">
+								'.get_the_date("l, F j, Y", $id).' by dok		
+							</div>
+						</div>	
+						<div class="media">						
+							<img src="'.$thumbnail[0].'" class="image">
+						</div>
+						<div class="footer">
+							<a href="'.$permalink.'">
+								<div class="link">
+									
+								</div>
+							</a>
+							<div class="share">
+								<div class="shareCount">
+									15
+								</div>
+							</div>
+							
+						</div>
 					</div>
+					<div class="shadow">
+					</div>	
 				</div>
 			';
 			return true;	
@@ -184,37 +187,39 @@
 		// Print
 			echo'
 				<div class="item teaserTile">
-					
-					<div class="top">
-						<div class="tag">
-							'.$tag.'	
-						</div>
-						<div class="title hyphe">
-							'.$postTitle.'		
-						</div>
-						<div class="subtitle">
-							'.$subtitle.'		
-						</div>
-					</div>
-					
-					<div class="media">
-						<img src="'.$thumbnail[0].'" class="image">
-					</div>
-					
-					<div class="content hyphe">
-						'.$postContent.'
-	
-					</div>
-					<div class="footer">
-						<div class="link">
-							
-						</div>
-						<div class="share">
-							<div class="shareCount">
-								15
+					<div class="main">
+						<div class="top">
+							<div class="tag">
+								'.$tag.'	
+							</div>
+							<div class="title hyphe">
+								'.$postTitle.'		
+							</div>
+							<div class="subtitle">
+								'.$subtitle.'		
 							</div>
 						</div>
 						
+						<div class="media">
+							<img src="'.$thumbnail[0].'" class="image">
+						</div>
+						
+						<div class="content hyphe">
+							'.$postContent.'
+		
+						</div>
+						<div class="footer">
+							<div class="link">
+								
+							</div>
+							<div class="share">
+								<div class="shareCount">
+									15
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="shadow">
 					</div>
 				</div>
 			';
@@ -242,35 +247,39 @@
 		// Print
 			echo'
 				<div class="item videoTile">
-					
-					<div class="top">
-						<div class="tag">
-							Video
+					<div class="main">
+	
+						<div class="top">
+							<div class="tag">
+								Video
+							</div>
+							<div class="title hyphe">
+								'.$postTitle.'		
+							</div>
+							<div class="subtitle">
+								'.$subtitle.'		
+							</div>
+						</div>	
+						<div class="media">
+							
+							<iframe width="300px" height="200px" src="'.$editedvideoUrl.'" frameborder="0" allowfullscreen></iframe>
+	
 						</div>
-						<div class="title hyphe">
-							'.$postTitle.'		
-						</div>
-						<div class="subtitle">
-							'.$subtitle.'		
-						</div>
-					</div>	
-					<div class="media">
-						
-						<iframe width="100%" height="100%" src="'.$editedvideoUrl.'" frameborder="0" allowfullscreen></iframe>
+						<div class="footer">
+							<a href="'.$medialink.'">
+							<div class="link">
+								
+							</div>
+							</a>
+							<div class="share">
+								<div class="shareCount">
+									15
+								</div>
+							</div>
+							</div>
 
 					</div>
-					<div class="footer">
-						<a href="'.$medialink.'">
-						<div class="link">
-							
-						</div>
-						</a>
-						<div class="share">
-							<div class="shareCount">
-								15
-							</div>
-						</div>
-						
+					<div class="shadow">
 					</div>
 				</div>
 
@@ -299,34 +308,39 @@
 		// Print
 			echo'
 				<div class="item veranstaltungsTile">
-					
-					<div class="top">
-						<div class="tag">
-							Event
-						</div>
-						<div class="title hyphe">
-							'.$postTitle.'		
-						</div>
-					</div>
-
-					
-					<div class="content">
-						
-						<p>'.$time.'</p>
-						<p style="color:black">'.$place.'</p>
+					<div class="main">
 	
-					</div>
-					<div class="footer">
-						<div class="link">
-							
-						</div>
-						<div class="share">
-							<div class="shareCount">
-								15
+						<div class="top">
+							<div class="tag">
+								Event
+							</div>
+							<div class="title hyphe">
+								'.$postTitle.'		
 							</div>
 						</div>
+	
 						
+						<div class="content">
+							
+							<p>'.$time.'</p>
+							<p style="color:black">'.$place.'</p>
+		
+						</div>
+						<div class="footer">
+							<div class="link">
+								
+							</div>
+							<div class="share">
+								<div class="shareCount">
+									15
+								</div>
+							</div>
+							
+						</div>
 					</div>
+					<div class="shadow">
+					</div>
+
 				</div>
 			';
 			return true;
@@ -346,27 +360,30 @@
 		// Print
 			echo'
 				<div class="item teaserTile">
-					
-					<div class="top">
-						<div class="tag">
-							@'.$user.'	
-						</div>
-					</div>
-
-					<div class="content">
-						'.$content.'
-	
-					</div>
-					<div class="footer">
-						<div class="link">
-							
-						</div>
-						<div class="share">
-							<div class="shareCount">
-								15
+					<div class="main">
+						<div class="top">
+							<div class="tag">
+								@'.$user.'	
 							</div>
 						</div>
-						
+	
+						<div class="content">
+							'.$content.'
+		
+						</div>
+						<div class="footer">
+							<div class="link">
+								
+							</div>
+							<div class="share">
+								<div class="shareCount">
+									15
+								</div>
+							</div>
+						</div>	
+					</div>
+					
+					<div class="shadow"5>
 					</div>
 				</div>
 			';
@@ -388,14 +405,13 @@
 			
 			echo'
 				<div class="item downloadsTile">
-					<div class="top">
-						<div class="tag">
-							Downloads
+					<div class="main">
+						<div class="content">
+							<p>'.$post_content.'</p>
+							<p style="color:black"><a href="'.$medialink.'">Download</a></p>
 						</div>
 					</div>
-					<div class="content">
-						<p>'.$post_content.'</p>
-						<p style="color:black"><a href="'.$medialink.'">Download</a></p>
+					<div class="shadow">
 					</div>
 				</div>
 			';
@@ -416,6 +432,7 @@
 		// Print
 			echo'
 				<div class="item galerieTile">
+				<div class="main">
 
 					<div class="media">
 						<img src="'.$thumbnail[0].'" class="image">
@@ -428,7 +445,12 @@
 			 MultiPostThumbnails::the_post_thumbnail('galerie', 'galerieImage3',$id,  'submedia');
 			 MultiPostThumbnails::the_post_thumbnail('galerie', 'galerieImage4',$id,  'submedia');
 
-			 echo("</div></div>");
+			 echo('</div>
+			 
+			 </div>
+			 
+			 <div class="shadow"></div>
+			 </div>');
 			return true;
 		}		
 		
@@ -450,10 +472,15 @@
 		// Print
 			echo'
 				<div class="item introTile">
-
-					<div class="content">
-						'.$content.'
+					<div class="main">
+	
+						<div class="content">
+							'.$content.'
+						</div>
 					</div>
+					<div class="shadow">
+					</div>
+
 				</div>
 			';
 			return true;
@@ -483,21 +510,24 @@
 		// Print
 			echo'
 				<div class="item contactTile">
-
-					<div class="top">
-						<div class="title">
-							'.$vorname.' '.$nachname.'	
+					
+					<div class="main">
+						<div class="top">
+							<div class="title">
+								'.$vorname.' '.$nachname.'	
+							</div>
+							<div class="subtitle">
+								'.$subtitle.'		
+							</div>
 						</div>
-						<div class="subtitle">
-							'.$subtitle.'		
-						</div>
-					</div>
-					<div class="content hyphe">
-						<p class="mail">'.$email.'</p>
-						<p class="phone">'.$phone.'</p>
-						<p class="skype">'.$skype.'</p>
-	
-					</div>				
+						<div class="content hyphe">
+							<p class="mail">'.$email.'</p>
+							<p class="phone">'.$phone.'</p>
+							<p class="skype">'.$skype.'</p>
+						</div>		
+					</div>	
+					<div class="shadow">
+					</div>			
 			';
 			//print_r($metadata);
 			echo("</div>");
