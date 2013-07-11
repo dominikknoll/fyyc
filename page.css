@@ -3,6 +3,9 @@
   -moz-box-shadow: 0px 0px 3px #aaaaaa;
   -webkit-box-shadow: 0px 0px 3px #aaaaaa;
 }
+.navbar-shadow {
+  background: url("img/navibgHard.png") no-repeat scroll center 0px !important;
+}
 header {
   background: none;
 }

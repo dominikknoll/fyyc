@@ -20,6 +20,8 @@ body{
 .media{
 	margin: 0px;
 	padding-top: 15px;
+	height: 168px;
+overflow: hidden;
 }
 
 header{
@@ -57,7 +59,6 @@ header{
 		margin-top: 95px;
 
 		color: #999999;
-		background-color: white;
 		font-size: 48px;
 		line-height: 61px;
 		padding: 30px;
@@ -155,6 +156,33 @@ header{
 }
 
 
+@media (min-width: 768px) and (max-width: 979px) {
+	.container{
+	width: 620px;
+	}
+	
+	.containerIsotope{
+		width: 640px;
+	}
+}
+
+@media (max-width: 767px) { 
+	
+	body{
+		margin: 0px;
+		padding: 0px;
+	}
+
+	.container{
+	width: 600px;
+	}
+	
+	.containerIsotope{
+		width: 600px;
+	}
+}
+
+
 
 
 
@@ -181,8 +209,8 @@ header{
 			}
 			.title{
 				padding-top: 20px;
-				font-size: 24px;
-				line-height: 30px;
+				font-size: 18px;
+				line-height: 25px;
 				color: #999999;
 			}
 			.subtitle{
@@ -194,6 +222,12 @@ header{
 			img{
 				width: 100% !important;
 			}
+		}
+		
+		.postContent{
+			display: none;
+			padding: 30px 30px 0px 30px;
+			color: #999999;
 		}
 		
 		.content{
@@ -371,6 +405,57 @@ header{
 	
 }
 
+
+.twitterTile{
+	.twitterHead{
+		img{
+			float: left;
+			  -webkit-border-radius: 4px;
+			  -moz-border-radius: 4px;
+			  border-radius: 4px;
+		}
+		p{
+			padding-left: 60px;
+		}
+		height: 62px;
+		
+		.twitterArrow {
+		    position: absolute;
+		    top: 50px;
+		    left: 15px;
+		    background: url("img/twitterArrow.png") no-repeat scroll 0px 0px;
+		    width: 28px;
+		    height: 12px;
+		    
+		}
+	}
+	.main{
+		.content{
+			padding-top: 0px;
+		}
+		.footer{
+			border-top: solid 1px #dddddd;
+			margin-top: 20px;
+			padding-top: 5px;
+			padding-bottom: 15px;
+		
+			color: #999999;
+			.twitterFooterRight{
+				float: right;
+				padding-right: 30px;
+
+				
+				color: black;
+				span{
+					padding-left: 10px;
+				}
+				
+			}
+		}
+	}
+}
+
+
 .downloadsTile{
 	.main{
 		.content{
@@ -389,6 +474,7 @@ header{
 
 	}
 }
+
 
 
 

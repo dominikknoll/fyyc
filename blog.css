@@ -1,0 +1,78 @@
+header {
+  background: none;
+}
+.container {
+  width: 940px;
+}
+.containerIsotope {
+  width: 960px;
+}
+.containerIsotope .blogMain {
+  width: 640px;
+  float: left;
+}
+.containerIsotope .blogNavi {
+  width: 320px;
+  float: left;
+}
+.containerBlognavi {
+  width: 320px;
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .containerIsotope {
+    width: 640px;
+  }
+  .containerIsotope .blogMain {
+    width: 320px;
+    float: left;
+  }
+  .containerIsotope .blogNavi {
+    width: 320px;
+    float: left;
+  }
+}
+@media (max-width: 767px) {
+  .containerIsotope {
+    width: 320px;
+  }
+  .containerIsotope .blogMain {
+    float: left;
+  }
+  .containerIsotope .blogNavi {
+    display: none;
+    float: left;
+  }
+}
+@media (min-width: 980px) {
+  .blogMain .item:first-child {
+    width: 620px;
+  }
+  .blogMain .item:first-child .main {
+    background: white;
+  }
+  .blogMain .item:first-child .main .top {
+    float: right;
+    width: 250px;
+    padding: 25px 30px 0px 30px;
+  }
+  .blogMain .item:first-child .main .top .tag {
+    display: none;
+  }
+  .blogMain .item:first-child .main .top .title {
+    padding-top: 0px;
+  }
+  .blogMain .item:first-child .main .media {
+    padding-top: 30px;
+  }
+  .blogMain .item:first-child .main .postContent {
+    display: block;
+  }
+  .blogMain .item:first-child .main .footer {
+    clear: both;
+  }
+}
+.sidebar .main .top .title {
+  padding-top: 0px;
+  font-size: 24px;
+  color: black;
+}

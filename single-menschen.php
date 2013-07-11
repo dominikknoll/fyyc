@@ -3,35 +3,19 @@
 
 <html>
 	<head>
-		<?php get_header(); ?>
-		<?php wp_head(); ?>
+		<?php get_header(); wp_head(); ?>
+
 		<link href="wp-content/themes/fyyc/page.css" rel="stylesheet" media="screen">
 
 		
 		<?php			
-			include("wp-content/themes/fyyc/php/Tiles.php");	
-			include("wp-content/themes/fyyc/plugins/multiplePostThumbnails/multi-post-thumbnails.php");
-
-			$feed = new Tiles($wpdb, "menschen");
-
+			$feed				 = new Tiles($wpdb, "menschen");
+			$staticMenschenFeed  = new Tiles($wpdb); //empty
 			
-			$staticMenschenFeed = new Tiles($wpdb);	
 			$staticMenschenFeed->addFeed(313, "intro");
 			$staticMenschenFeed->addFeed(313, "contact");
 			//$staticMenschenFeed->addFeed(313, "linkedin");
-
-
-			
-			
-			//$staticMenschenFeed->printTest();
-			
-			//print_r($feed->getTiles());
-			
-			the_content();
-			
-			//print_r($feed->getTiles());
 		?>
-	
 	</head>
 	
 	<body>
@@ -44,7 +28,6 @@
 			</div>
 		</header>
 
-
 		<div class="container containerIsotope test"> 
 			<div id="isotope">
 				<?php
@@ -56,62 +39,15 @@
 					foreach ($feed->getTiles() as $index => $value) {
 						$feed->printTile($index, false);
 					}
-					$i=0;
-					
-					while($i<100){
-						//$feed->generateCrap();
-						$i++;
-					}
-					
 				?>
 			</div>
-
 		</div>
+		<?php include 'footer.php'; ?>
+		<foter>
+			<div class="container">	
+				foryouandyourcustomers gibt's in Amsterdam, Genf, München, Wien und Zürich	
+			</div>
+		</footer>
 		
-		<?php //include 'buildFooter.php'; ?>
-	</body>
-	
-	
-	
-	
-	<script>
-
-
-		
-		var $container = $('#isotope');
-		
-		$container.isotope({
-        itemSelector : '.item',
-        masonry : {
-          columnWidth : 10
-        },
-        masonryHorizontal : {
-          rowHeight: 10
-        }
-      });
-		
-		
-		$(document).ready(function() {
-		        // $('#slide').slideDown("slow");
-		}); 
-		$("#heroSlideButton").click(function () {
-			if ($("#heroSlider").is(":hidden")) {
-				$("#heroSlider").slideDown("slow");
-				} else {
-				$("#heroSlider").slideUp("slow");
-				}		
-	    });
-	    
-	    $(document).ready(function() {
-		        // $('#slide').slideDown("slow");
-		}); 
-		$("#naviSlideButtonMenschen").click(function () {
-			if ($("#naviSliderMenschen").is(":hidden")) {
-				$("#naviSliderMenschen").slideDown("slow");
-				} else {
-				$("#naviSliderMenschen").slideUp("slow");
-				}		
-	    });
-
-	</script>
+	</body>	
 </html>

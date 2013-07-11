@@ -1,6 +1,11 @@
 <!DOCTYPE HTML >
 <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=utf-8">
-
+<?php
+   /*
+   Template Name: frontpage
+   */
+?>
+   
 <html>
 	<head>
 		<?php get_header(); ?>
@@ -16,6 +21,7 @@
 	</head>
 	
 	<body>
+	Huray
 		<header>
 			<div class="container">	
 				<?php include 'html/buildHeader.php'; ?>	

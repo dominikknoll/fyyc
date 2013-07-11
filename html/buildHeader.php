@@ -8,8 +8,8 @@
 			<li><a href="#">Blog</a></li>
 		</ul>			    
 		<ul class="nav pull-right">	
-			<li><a href="#" style="font-weight:normal; padding-right: 5px;">Deutsch</a></li>
-			<li><a href="#">English</a></li>
+			<!--<li><a href="#" style="font-weight:normal; padding-right: 5px;">Deutsch</a></li> -->
+			<li><a href="#">Deutsch</a></li>
 		</ul>
 	</div>
 	<div class="navbar-shadow">

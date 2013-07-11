@@ -522,7 +522,6 @@ function wpt_event_posttype() {
 			'supports' => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
 			'show_in_nav_menus' => true,			
 			'capability_type' => 'post',
-			'rewrite' => array("slug" => "menschen", "with_front" => false), // Permalinks format
 			'menu_position' => 5,
 			'register_meta_box_cb' => 'add_events_metaboxes'
 

@@ -120,6 +120,7 @@
 			
 			$postdata = get_post( $id, "ARRAY_A");
 				$postTitle = $postdata["post_title"];
+				$postContent = $postdata["post_content"];
 			
 		// Edit		
 			$postTitle = colorupText($postTitle);
@@ -142,6 +143,9 @@
 						</div>	
 						<div class="media">						
 							<img src="'.$thumbnail[0].'" class="image">
+						</div>
+						<div class="postContent">
+								'.$postContent.'		
 						</div>
 						<div class="footer">
 							<a href="'.$permalink.'">
@@ -359,12 +363,15 @@
 			
 		// Print
 			echo'
-				<div class="item teaserTile">
+				<div class="item twitterTile">
+					<div class="twitterHead">
+						<div class="twitterArrow"></div>
+						<img width="45px height="45px" src="http://localhost/foryouandyourcustomers/wp-content/themes/fyyc/img/clausTwitter.jpg">
+						<p class="name"> @'.$user.'</p>
+						<p class="time"> vor 3 Stunden</p>
+					</div>
 					<div class="main">
 						<div class="top">
-							<div class="tag">
-								@'.$user.'	
-							</div>
 						</div>
 	
 						<div class="content">
@@ -372,14 +379,7 @@
 		
 						</div>
 						<div class="footer">
-							<div class="link">
-								
-							</div>
-							<div class="share">
-								<div class="shareCount">
-									15
-								</div>
-							</div>
+							15 Retweets <span class="twitterFooterRight"><span>Antworten</span><span>Retweet</span></span>
 						</div>	
 					</div>
 					
@@ -695,6 +695,43 @@
 					ORDER BY (factor_date * factor_priority_value * factor_type_value) ASC
 					LIMIT 80
 
+			';	
+				
+			}
+			
+			else if($siteType == "blog"){
+				$this->sql = '
+					SELECT 
+				posts.id as post_id, 
+				DATEDIFF(NOW(), posts.post_date)+1 as factor_date, 
+				(
+					select meta_value 
+						from foryouandyourcustomers.wp_postmeta as meta_priority 
+					WHERE meta_priority.post_id = posts.id AND meta_priority.meta_key = "postPriority"
+				) as factor_priority_name,
+				(SELECT ranking.value from foryouandyourcustomers.wp_addon_ranking as ranking WHERE ranking.type = factor_priority_name) as factor_priority_value,
+				posts.post_type as factor_type_name,
+				(SELECT ranking.value from foryouandyourcustomers.wp_addon_ranking as ranking WHERE ranking.type = posts.post_type) as factor_type_value,
+				posts.post_type,
+				posts.post_title as post_title,
+				posts.post_content as post_content,
+				"false" as "meta_link"
+				
+				
+				FROM foryouandyourcustomers.wp_posts as posts
+				
+				WHERE posts.id IN (
+					SELECT id as frontpage_id
+						FROM foryouandyourcustomers.wp_posts as posts
+						WHERE posts.id in (
+							SELECT meta.post_id
+							FROM foryouandyourcustomers.wp_postmeta as meta
+						)
+					)
+					AND posts.post_status = "publish" AND posts.post_type = "post"
+					
+					ORDER BY (factor_date * factor_priority_value * factor_type_value) ASC
+					LIMIT 80
 			';	
 				
 			}

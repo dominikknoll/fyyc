@@ -36,7 +36,7 @@ function Hypher(language) {
         exceptions = language['exceptions'].split(/,\s?/g);
 
         for (; i < exceptions.length; i += 1) {
-            this.exceptions[exceptions[i].replace(/-/g, '')] = exceptions[i].split('-');
+            this.exceptions[exceptions[i].replace(/-/g, '')] = exceptions[i].split('');
         }
     }
 }

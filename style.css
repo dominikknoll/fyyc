@@ -9,6 +9,8 @@ body {
 .media {
   margin: 0px;
   padding-top: 15px;
+  height: 168px;
+  overflow: hidden;
 }
 header {
   background: url("img/backgroundFrontpage.jpg") repeat-x bottom;
@@ -35,7 +37,6 @@ header .container .navbar .navbar-shadow {
 header .hero-unit {
   margin-top: 95px;
   color: #999999;
-  background-color: white;
   font-size: 48px;
   line-height: 61px;
   padding: 30px;
@@ -102,6 +103,26 @@ header .imageContainer img {
 .containerIsotope {
   width: 960px;
 }
+@media (min-width: 768px) and (max-width: 979px) {
+  .container {
+    width: 620px;
+  }
+  .containerIsotope {
+    width: 640px;
+  }
+}
+@media (max-width: 767px) {
+  body {
+    margin: 0px;
+    padding: 0px;
+  }
+  .container {
+    width: 600px;
+  }
+  .containerIsotope {
+    width: 600px;
+  }
+}
 .item {
   height: auto;
 }
@@ -124,8 +145,8 @@ header .imageContainer img {
 }
 .item .main .top .title {
   padding-top: 20px;
-  font-size: 24px;
-  line-height: 30px;
+  font-size: 18px;
+  line-height: 25px;
   color: #999999;
 }
 .item .main .top .subtitle {
@@ -134,6 +155,11 @@ header .imageContainer img {
 }
 .item .main .media img {
   width: 100% !important;
+}
+.item .main .postContent {
+  display: none;
+  padding: 30px 30px 0px 30px;
+  color: #999999;
 }
 .item .main .content {
   padding: 15px 30px 0px 30px;
@@ -250,6 +276,44 @@ header .imageContainer img {
 }
 .introTile .shadow {
   background: url("img/tileShadowLarge.png") no-repeat scroll 0px 0px;
+}
+.twitterTile .twitterHead {
+  height: 62px;
+}
+.twitterTile .twitterHead img {
+  float: left;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.twitterTile .twitterHead p {
+  padding-left: 60px;
+}
+.twitterTile .twitterHead .twitterArrow {
+  position: absolute;
+  top: 50px;
+  left: 15px;
+  background: url("img/twitterArrow.png") no-repeat scroll 0px 0px;
+  width: 28px;
+  height: 12px;
+}
+.twitterTile .main .content {
+  padding-top: 0px;
+}
+.twitterTile .main .footer {
+  border-top: solid 1px #dddddd;
+  margin-top: 20px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  color: #999999;
+}
+.twitterTile .main .footer .twitterFooterRight {
+  float: right;
+  padding-right: 30px;
+  color: black;
+}
+.twitterTile .main .footer .twitterFooterRight span {
+  padding-left: 10px;
 }
 .downloadsTile .main {
   background: url("img/tileIcons/downloads.jpg") no-repeat scroll left top;
