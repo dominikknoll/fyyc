@@ -316,6 +316,24 @@ if (!class_exists('MultiPostThumbnails')) {
 			return apply_filters("{$post_type}_{$thumb_id}_thumbnail_html", $html, $post_id, $post_thumbnail_id, $size, $attr);
 		}
 
+
+		//My functions
+
+		public static function get_the_post_thumbnail_url($post_type, $thumb_id, $post_id = NULL, $size = 'post-thumbnail', $attr = '' , $link_to_original = false) {
+			global $id;
+			$post_id = (NULL === $post_id) ? get_the_ID() : $post_id;
+			$post_thumbnail_id = self::get_post_thumbnail_id($post_type, $thumb_id, $post_id);
+			$size = apply_filters("{$post_type}_{$post_id}_thumbnail_size", $size);
+			
+			if ($post_thumbnail_id) {
+				$html = wp_get_attachment_image_src( $post_thumbnail_id, $size, false, $attr );
+				
+				return $html[0];
+			} 
+
+			return false;
+		}
+		
 		/**
 		 * Retrieve Post Thumbnail ID.
 		 *

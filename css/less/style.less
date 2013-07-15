@@ -4,13 +4,25 @@
   -webkit-box-shadow: @arguments;
 }
 
-
+*{
+	padding: 0px;
+	margin: 0px;
+}
 
 body{
 	background-color: #dddddd;
+	
+	margin: 0px;
+	padding: 0px;
 }
 
 .nav li a{
+	color: black !important;
+	font-weight: 500;
+	padding: 0px;
+}
+
+.blackLink a{
 	color: black !important;
 	font-weight: 500;
 	padding: 0px;
@@ -21,13 +33,12 @@ body{
 	margin: 0px;
 	padding-top: 15px;
 	height: 168px;
-overflow: hidden;
+	overflow: hidden;
 }
 
 header{
 	background: url("img/backgroundFrontpage.jpg") repeat-x bottom;
 	background-color: white;
-	max-height: 600px;
     overflow: hidden;
 
 	.container{
@@ -66,8 +77,10 @@ header{
 		text-align: left;
 		
 		.btn{
-			margin-top: 35px;
-			margin-left: 25%;
+			margin-top: 50px;
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
 			height: 40px;
 			width: 240px;
 			font-size: 14px;
@@ -85,7 +98,6 @@ header{
 	    margin-right: auto;
 	    max-width: 1280px;
 	    min-height: 600px;
-	   .box-shadow(0px; 0px);
 
     
 	   img{
@@ -93,6 +105,8 @@ header{
 	    margin-left: auto !important;
 	    margin-right: auto !important;
 	    max-width: inherit;
+	   .box-shadow(0px; 0px);
+
 
 		} 	
     }
@@ -100,93 +114,61 @@ header{
 }
 
 
-.container {
-	position: relative;
-	//width: 940px;
-}
-
-.containerIsotope{
-	//width: 960px;
-}
-   
-
-
-
 
 .test{
 	margin-top: -93px;
 }
 
-
-
 .item{
-	width: 300px;
+	width: 310px;
 	height: 150px;
 	//margin:15px;
-	margin: 5px 10px 5px 10px;
+	margin: 10px 15px 10px 15px;
 }
 
-.introTile{
-	width: 620px;
-}
-
-
-/*
-@media (min-width: 768px) and (max-width: 979px) {
-	.item{
-	width: 330px;
-	background-color: green;
-	}
-}
-@media (max-width: 767px) { 
-	.item{
-	width: 100%;
-	height: 150px;
-	background-color: red;
-	margin: 6px;
-	}
-}
-*/
 .container{
-	width: 940px;
+	width: 996px;
+	position: relative;
+
 }
 
 .containerIsotope{
-	width: 960px;
+	width: 1024px;
 }
 
 
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 768px) and (max-width: 1020px) {	
 	.container{
-	width: 620px;
+	width: 650px;
 	}
 	
 	.containerIsotope{
-		width: 640px;
+		width: 680px;
 	}
 }
 
 @media (max-width: 767px) { 
-	
-	body{
-		margin: 0px;
-		padding: 0px;
-	}
-
 	.container{
-	width: 600px;
-	}
+		width: 100%;
+		}
 	
 	.containerIsotope{
-		width: 600px;
+		width: 340px;
 	}
+}
+
+@media (min-width: 767px) {
+	
+	.introTile{
+		width: 650px;
+		}
 }
 
 
 
 
 
-
+//Tiles
 .item{
 	p{
 		margin: 0px;
@@ -208,7 +190,7 @@ header{
 				text-transform: uppercase;
 			}
 			.title{
-				padding-top: 20px;
+				padding-top: 15px;
 				font-size: 18px;
 				line-height: 25px;
 				color: #999999;
@@ -216,6 +198,10 @@ header{
 			.subtitle{
 				color: #666666;
 				font-size: 12px;
+				padding-top: 7px;
+				
+
+				
 			}
 		}
 		.media{
@@ -241,8 +227,8 @@ header{
 			}
 		}
 		.footer{
-			padding-top: 16px;
-			padding-bottom: 10px;
+			padding-top: 15px;
+			padding-bottom: 15px;
 			padding-left: 30px;
 			
 			.share{
@@ -286,11 +272,12 @@ header{
 		}
 	}
 	.submedia{
-		width: 304px;
-		img{
+		width: 314px;
+		a img {
 			padding-right: 4px;
 			padding-top: 4px;
-			width: 148px;
+			width: 151px;
+			height: 87px;
 		}
 		padding-bottom: 30px;
 	}
@@ -307,11 +294,29 @@ header{
 				padding-left: 35px;	
 			}
 			.subtitle{
-				padding-top: 5px;
 			}
 		}
 	}
 }
+
+.instagramTile{
+		.main{
+			background: url("img/tileIcons/instagram.jpg") no-repeat scroll left top;	
+			background-position: 30px 20px;
+			background-color: white;
+		
+			.media{
+				padding-top: 25px;
+				height: 300px;	
+			}
+		.top{
+			.tag{
+				padding-left: 43px;	
+			}
+		}
+	}
+}
+
 
 .veranstaltungsTile{
 	.main{
@@ -405,8 +410,9 @@ header{
 	
 }
 
-
 .twitterTile{
+	font-size: 12px;
+	
 	.twitterHead{
 		img{
 			float: left;
@@ -416,6 +422,12 @@ header{
 		}
 		p{
 			padding-left: 60px;
+		}
+		.name{
+			font-weight: bold;
+		}
+		.time{
+			color: #666666;
 		}
 		height: 62px;
 		
@@ -443,7 +455,7 @@ header{
 			.twitterFooterRight{
 				float: right;
 				padding-right: 30px;
-
+				font-weight: 400;
 				
 				color: black;
 				span{
@@ -455,16 +467,15 @@ header{
 	}
 }
 
-
 .downloadsTile{
 	.main{
 		.content{
 			padding-top: 0px;
 		}
 		background: url("img/tileIcons/downloads.jpg") no-repeat scroll left top;	
-		background-position: 30px 35px;
+		background-position: 30px 29px;
 		background-color: white;
-		padding-top: 30px;
+		padding-top: 25px;
 		padding-left: 45px;
 		p{
 			padding-bottom: 10px;
@@ -475,7 +486,46 @@ header{
 	}
 }
 
+//Footer
 
+footer{
+	.mapContainer{
+		color: #999999;
+		font-size: 14px;
+		
+		.top{
+			background: url("img/footerbg.png") no-repeat scroll 0px 0px;
+
+			padding-top: 30px;
+			margin-top: 25px;
+			margin-bottom: 25px;
+		
+			.left{
+				float: left;
+			}
+			.right{
+				float: right;
+			}
+		}
+		.bottom{
+			padding-top: 30px;
+			margin-bottom: 30px;
+			.left{
+				float: left;
+			}
+			.right{
+				float: right;
+			}
+		}
+	}
+	
+	.map{
+		padding-top: 25px;
+	}
+	.footerBottom{
+		background-color: #333333;
+	}
+}
 
 
 

@@ -2,35 +2,46 @@ header{
 	background: none;
 }
 
-.container{
-	width: 940px;
+
+.box-shadowNavi (@x: 0; @y: 0; @blur: 3px; @color: #aaa) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}
+
+.navbar-inner{
+	.box-shadowNavi(0px; 0px);
+}
+
+
+
+.containerNavi{
+	height: 150px;
 }
 
 .containerIsotope{
-	width: 960px;
 	.blogMain{
-		width: 640px;
+		width: 680px;
 		float: left;
 	}
 	.blogNavi{
-		width: 320px;
+		width: 340px;
 		float: left;
 	}
 }
 
 .containerBlognavi{
-	width: 320px;
+	width: 340px;
 }
 
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 768px) and (max-width: 1020px) {
 	.containerIsotope{
-		width: 640px;
 		.blogMain{
-			width: 320px;
+			width: 340px;
 			float: left;
 		}
 		.blogNavi{
-			width: 320px;
+			width: 340px;
 			float: left;
 		}
 	}
@@ -39,7 +50,7 @@ header{
 
 @media (max-width: 767px) { 
 	.containerIsotope{
-		width: 320px;
+		width: 340px;
 		.blogMain{
 			float: left;
 		}
@@ -51,14 +62,27 @@ header{
 }
 
 
-
+.blogMain{
+		.main{
+			background: white;
+			.top{
+				.tag{
+					display: none;
+				}
+				.title{
+					padding-top: 0px;
+				}
+			}
+		}
+	
+	}
 
 
 
 @media (min-width: 980px){
 	.blogMain{
 		.item:first-child{
-			width: 620px;
+			width: 650px;
 			.main{
 				background: white;	
 		
@@ -66,15 +90,21 @@ header{
 					float: right;
 					width: 250px;
 					padding: 25px 30px 0px 30px;
+					position: relative;
+					height: 173px;
 			
 					.tag{
 						display: none;
 					}
 					.title{
-					padding-top: 0px;
+						margin-right: 30px;
+						position: absolute;
+						bottom: 20px;
 					}
 					.subtitle{
-		
+						position: absolute;
+						bottom: 0px;
+						line-height: 1;
 					}
 				}
 				.media{
@@ -84,6 +114,7 @@ header{
 				}
 				.postContent{
 					display: block;
+					line-height: 23px;
 				}
 				.footer{
 					clear: both;
@@ -106,4 +137,75 @@ header{
 			}
 		}
 	}
+}
+
+.widget{
+	.main{
+		padding: 25px 30px 15px 30px;
+		
+		.tagcloud{
+			a{
+				color: black;
+			}
+			
+		}
+		
+		ul {
+			list-style: none;
+			margin: 0px;			
+			li{
+				a{
+					color: black;
+				}
+			}
+		}
+	}
+
+	h3{
+		font-weight: normal;
+		font-size: 24px;
+		line-height: 30px;
+		padding: 0px;
+		padding-bottom: 20px;
+		margin: 0px;
+	}	
+	}
+	
+.postTileSingle{
+	 margin: 0; padding: 0;
+
+ color: #444; background: #fff url(baseline.png); 
+	
+	p,
+	li,
+	th,
+	td      { font-size: 1.6em; line-height: 1.5em; }
+	
+	p       { margin-bottom: 1.5em; }
+	
+	ul,
+	ol      { margin-bottom: 2.4em; }
+	
+	h3,
+	h2,
+	h1      { font-weight: bold; line-height: 1.5em; }
+	
+	h3      { font-size: 1.6em; }
+	h2      { font-size: 2.4em; padding: .5833em 0 0; margin-bottom: .9166em; }
+	h1      { font-size: 3.2em; padding: 12px 0 0; margin-bottom: .59em; }
+	
+	table   { border-collapse: collapse; margin-top: 3.6em; margin-bottom: 3.6em; table-layout: fixed; width: 100%; }
+	
+	th      { font-weight: normal; }
+	th, td  { border-top: .0625em solid #ccc; padding: .6875em 1em .75em; vertical-align: top; }
+	
+	.numeric        { text-align: right; }
+	td.numeric      { font-family: 'Anonymous Pro', monospace; }
+	th[scope="row"] { padding-left: 0; text-align: left; white-space: nowrap; }
+	
+	#sizer                  { width: 89em; margin: 0 auto; overflow: auto; }
+	.main-content           { float: left; width: 51em; padding: 2.4em 2em; }
+	.supplementary-content  { float: left; width: 30em; padding: 2.4em 2em; }
+	
+	.banner { margin-bottom: 1.6em; }	
 }

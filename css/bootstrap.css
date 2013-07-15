@@ -2272,7 +2272,7 @@ input[type="button"].btn-block {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
   background-image: -webkit-linear-gradient(top, #62c462, #51a351);
   background-image: -o-linear-gradient(top, #62c462, #51a351);
-  background-image: linear-gradient(to bottom, #62c462, #51a351);
+  background-image: linear-gradient(to bottom, #73be46, #73be46);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
   border-color: #51a351 #51a351 #387038;
@@ -5276,7 +5276,7 @@ button.close {
 .visible-desktop {
   display: inherit !important;
 }
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 768px) and (max-width: 1020px) {
   .hidden-desktop {
     display: inherit !important;
   }
@@ -5803,7 +5803,7 @@ button.close {
     width: 28px;
   }
 }
-@media (max-width: 979px) {
+@media (max-width: 768px) {
   body {
     padding-top: 0;
   }

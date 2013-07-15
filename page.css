@@ -1,13 +1,11 @@
-.navi-inner {
-  box-shadow: 0px 0px 3px #aaaaaa;
-  -moz-box-shadow: 0px 0px 3px #aaaaaa;
-  -webkit-box-shadow: 0px 0px 3px #aaaaaa;
-}
 .navbar-shadow {
   background: url("img/navibgHard.png") no-repeat scroll center 0px !important;
 }
 header {
-  background: none;
+  background: url("img/backgroundFrontpage.jpg") repeat-x bottom #ffffff;
+}
+header .imageContainer {
+  padding-bottom: 8px;
 }
 body {
   background: none;

@@ -32,25 +32,32 @@
 	<body>
 
 		<header>
-			<div class="container">	
+			<div class="container containerNavi">	
 				<?php include 'html/buildHeader.php'; ?>	
-				<?php include 'html/buildBlogHero.php'; ?>	
-
 			</div>
 		</header>
 
 		<div class="container containerIsotope"> 
 			<div id="isotope" class="blogMain">
-				<?php
-				
-					//foreach ($staticMenschenFeed->getTiles() as $index => $value) {
-					//	$staticMenschenFeed->printTile($index, false);
-					//}
-					
-					foreach ($feed->getTiles() as $index => $value) {
-						$feed->printTile($index, false);
-					}
-				?>
+			
+				<div class="item postTileSingle">
+					<div class="main">
+						<div class="postContent">
+							<?php
+								if (have_posts()) :
+								   while (have_posts()) :
+								      the_post();
+								      echo("<h1>".get_the_title()."</h1>");
+								      the_content();
+								   endwhile;
+								endif;
+							?>		
+						</div>
+
+					</div>
+					<div class="shadow">
+					</div>	
+				</div>
 			</div>
 			<div id="isotope" class="blogNavi">
 					<?php dynamic_sidebar ('sidebar-1');?>

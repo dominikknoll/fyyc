@@ -1,5 +1,20 @@
 <?php 
 
+function twentyeleven_widgets_init() {
+
+
+	register_sidebar( array(
+		'name' => __( 'Main Sidebar', 'twentyeleven' ),
+		'id' => 'sidebar-1',
+		'before_widget' => '<div class="item widget"><div class="main">',
+		'after_widget' => '</div><div class="shadow"></div></div>',
+		'before_title' => '<h3 class="item widget-title">',
+		'after_title' => '</h3>',
+	) );
+}
+add_action( 'widgets_init', 'twentyeleven_widgets_init' );
+
+
 define('WP_POST_REVISIONS', false);
 
 
@@ -60,7 +75,7 @@ add_theme_support( 'post-thumbnails' );
 
 //set_post_thumbnail_size(300, 200, true); // Normal post thumbnails
 
-add_image_size('submedia', 140, 87, true);
+add_image_size('submedia', 145, 81, true);
 add_image_size( "tileImage", 300, 0, false );
 add_image_size( "tileImageRetina", 900, 0, false );
 
@@ -441,7 +456,9 @@ function wpt_event_posttype() {
 			'supports' => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
 			'show_in_nav_menus' => true,			
 			'capability_type' => 'post',
-			'rewrite' => array("slug" => "menschen", "with_front" => false), // Permalinks format
+			'has_archive' => true,
+
+			'rewrite' => false, // Permalinks format
 			'menu_position' => 5,
 			'register_meta_box_cb' => 'add_events_metaboxes'
 

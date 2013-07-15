@@ -19,7 +19,7 @@
 	</head>
 	
 	<body>
-		<header> 
+		<header>
 			<div class="container">	
 				<?php include 'html/buildHeader.php'; ?>	
 			</div>
@@ -43,6 +43,11 @@
 			</div>
 		</div>
 		<?php include 'footer.php'; ?>
+		<foter>
+			<div class="container">	
+				foryouandyourcustomers gibt's in Amsterdam, Genf, München, Wien und Zürich	
+			</div>
+		</footer>
 		
 	</body>	
 </html>

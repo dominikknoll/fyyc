@@ -21,7 +21,6 @@
 	</head>
 	
 	<body>
-	Huray
 		<header>
 			<div class="container">	
 				<?php include 'html/buildHeader.php'; ?>	
@@ -41,6 +40,8 @@
 
 		
 		<?php //include 'buildFooter.php'; ?>
+		
+
 	</body>
 	
 	

@@ -35,3 +35,25 @@
     });
 
 </script>
+
+<footer>
+	<div class="container mapContainer">	
+		<div class="top">
+			<div class="left"><span style="color:#73be46 !important">foryouandyourcustomers</span> gibt's in Amsterdam, Genf, München, <span style="color:black !important">Wien</span> und Zürich</div>
+			<div class="right">Kontakt Offene Stellen T F B</div>
+		</div>
+	</div>
+		<div class="map">
+			<?php include 'html/buildMap.php'; ?>
+		</div>
+	<div class="footerBottom">
+		<div class="container mapContainer">	
+	
+			<div class="bottom">
+				<div class="left">Copyright 2013 foryouandyourcustomers AG</div>
+				<div class="right">Impressum AGB</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
