@@ -2,6 +2,14 @@
 		
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+<meta name = "viewport"
+content = "width = 320, <!—Seite auf 1100 Pixel skalieren-->
+user-scalable = yes,  <!-- Darf der User zoomen? yes/no -->
+initial-scale = 0.4,  <!-- Minimaler Skalierungsfaktor -->
+maximum-scale = 1 <!-- Maximaler Skalierungsfaktor. Hier 100% = scharfe Pixeldarstellung -->
+"/>
+
 <link href="<?php echo get_stylesheet_directory_uri()?>/css/bootstrap.css" rel="stylesheet" media="screen">
 <link href="<?php echo get_stylesheet_directory_uri()?>/css/isotope.css" rel="stylesheet" media="screen">
 <link href="<?php echo get_stylesheet_directory_uri()?>/style.css" rel="stylesheet" media="screen">
@@ -23,12 +31,10 @@
 
 <?php 
 	include("wp-content/themes/fyyc/php/Tiles.php");	
+	include("wp-content/themes/fyyc/php/Menschen.php");	
+
 	include("wp-content/themes/fyyc/plugins/multiplePostThumbnails/multi-post-thumbnails.php");
 ?>
-
-
-
-
 
 	<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri()?>/plugins/fancybox/jquery.fancybox.js?v=2.1.5"></script>
 	
@@ -36,178 +42,7 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			/*
-			 *  Simple image gallery. Uses default settings
-			 */
-
 			$('.fancybox').fancybox();
-
-			/*
-			 *  Different effects
-			 */
-
-			// Change title type, overlay closing speed
-			$(".fancybox-effects-a").fancybox({
-				helpers: {
-					title : {
-						type : 'outside'
-					},
-					overlay : {
-						speedOut : 0
-					}
-				}
-			});
-
-			// Disable opening and closing animations, change title type
-			$(".fancybox-effects-b").fancybox({
-				openEffect  : 'none',
-				closeEffect	: 'none',
-
-				helpers : {
-					title : {
-						type : 'over'
-					}
-				}
-			});
-
-			// Set custom style, close if clicked, change title type and overlay color
-			$(".fancybox-effects-c").fancybox({
-				wrapCSS    : 'fancybox-custom',
-				closeClick : true,
-
-				openEffect : 'none',
-
-				helpers : {
-					title : {
-						type : 'inside'
-					},
-					overlay : {
-						css : {
-							'background' : 'rgba(238,238,238,0.85)'
-						}
-					}
-				}
-			});
-
-			// Remove padding, set opening and closing animations, close if clicked and disable overlay
-			$(".fancybox-effects-d").fancybox({
-				padding: 0,
-
-				openEffect : 'elastic',
-				openSpeed  : 150,
-
-				closeEffect : 'elastic',
-				closeSpeed  : 150,
-
-				closeClick : true,
-
-				helpers : {
-					overlay : null
-				}
-			});
-
-			/*
-			 *  Button helper. Disable animations, hide close button, change title type and content
-			 */
-
-			$('.fancybox-buttons').fancybox({
-				openEffect  : 'none',
-				closeEffect : 'none',
-
-				prevEffect : 'none',
-				nextEffect : 'none',
-
-				closeBtn  : false,
-
-				helpers : {
-					title : {
-						type : 'inside'
-					},
-					buttons	: {}
-				},
-
-				afterLoad : function() {
-					this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
-				}
-			});
-
-
-			/*
-			 *  Thumbnail helper. Disable animations, hide close button, arrows and slide to next gallery item if clicked
-			 */
-
-			$('.fancybox-thumbs').fancybox({
-				prevEffect : 'none',
-				nextEffect : 'none',
-
-				closeBtn  : false,
-				arrows    : false,
-				nextClick : true,
-
-				helpers : {
-					thumbs : {
-						width  : 50,
-						height : 50
-					}
-				}
-			});
-
-			/*
-			 *  Media helper. Group items, disable animations, hide arrows, enable media and button helpers.
-			*/
-			$('.fancybox-media')
-				.attr('rel', 'media-gallery')
-				.fancybox({
-					openEffect : 'none',
-					closeEffect : 'none',
-					prevEffect : 'none',
-					nextEffect : 'none',
-
-					arrows : false,
-					helpers : {
-						media : {},
-						buttons : {}
-					}
-				});
-
-			/*
-			 *  Open manually
-			 */
-
-			$("#fancybox-manual-a").click(function() {
-				$.fancybox.open('1_b.jpg');
-			});
-
-			$("#fancybox-manual-b").click(function() {
-				$.fancybox.open({
-					href : 'iframe.html',
-					type : 'iframe',
-					padding : 5
-				});
-			});
-
-			$("#fancybox-manual-c").click(function() {
-				$.fancybox.open([
-					{
-						href : '1_b.jpg',
-						title : 'My title'
-					}, {
-						href : '2_b.jpg',
-						title : '2nd title'
-					}, {
-						href : '3_b.jpg'
-					}
-				], {
-					helpers : {
-						thumbs : {
-							width: 75,
-							height: 50
-						}
-					}
-				});
-			});
-
-
 		});
 	</script>
 	
@@ -218,3 +53,48 @@
 
 
 	</style>
+	
+	
+    <style type="text/css">
+      #map-canvas { height: 420px }
+    </style>
+    
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLR4jBGm9Y4xoIqk4iSS6eSeUSq-n-nJ8&sensor=false">
+    </script>
+    
+    <script type="text/javascript">
+		      function initialize() {
+		
+		  // Create an array of styles.
+		  var styles = [
+		    {
+		      stylers: [
+		        { saturation: -100 }
+		      ]
+		    }
+		  ];
+		
+		  // Create a new StyledMapType object, passing it the array of styles,
+		  // as well as the name to be displayed on the map type control.
+		  var styledMap = new google.maps.StyledMapType(styles,
+		    {name: "Styled Map"});
+		  // Create a map object, and include the MapTypeId to add
+		  // to the map type control.
+		  var mapOptions = {
+		    zoom: 18,
+		    center: new google.maps.LatLng(48.198096, 16.359645),
+		    mapTypeControlOptions: {
+		      mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+		    }
+		  };
+		  var map = new google.maps.Map(document.getElementById('map-canvas'),
+		    mapOptions);
+		
+		  //Associate the styled map with the MapTypeId and set it to display.
+		  map.mapTypes.set('map_style', styledMap);
+		  map.setMapTypeId('map_style');
+		}
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+	

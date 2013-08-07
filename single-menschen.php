@@ -8,12 +8,18 @@
 		<link href="wp-content/themes/fyyc/page.css" rel="stylesheet" media="screen">
 
 		
-		<?php			
-			$feed				 = new Tiles($wpdb, "menschen");
-			$staticMenschenFeed  = new Tiles($wpdb); //empty
+		<?php	
+			$postid = get_the_ID();				
+			$title = get_the_title();		
+					
+			$post_thumbnail_id  = get_post_thumbnail_id();
+			$post_thumbnail_url = wp_get_attachment_image_src( $post_thumbnail_id, 'headerImage', false );
 			
-			$staticMenschenFeed->addFeed(313, "intro");
-			$staticMenschenFeed->addFeed(313, "contact");
+			$feed				 = new Tiles($wpdb,$title, "menschen");
+			$staticMenschenFeed  = new Tiles($wpdb, $title); //empty
+			
+			$staticMenschenFeed->addFeed($postid, "intro");
+			$staticMenschenFeed->addFeed($postid, "contact");
 			//$staticMenschenFeed->addFeed(313, "linkedin");
 		?>
 	</head>
@@ -24,7 +30,7 @@
 				<?php include 'html/buildHeader.php'; ?>	
 			</div>
 			<div class="imageContainer">
-				<img src="wp-content/themes/fyyc/img/img.jpg">
+				<?php echo('<img src="'.$post_thumbnail_url[0].'">');?>
 			</div>
 		</header>
 

@@ -36,6 +36,13 @@ include("plugins/multiplePostThumbnails/multi-post-thumbnails.php");
 
     
 if (class_exists('MultiPostThumbnails')) {
+     new MultiPostThumbnails(array(
+        'label' => 'Portrait',
+        'id' => 'portrait',
+        'post_type' => 'menschen'
+        )
+    );
+    
     new MultiPostThumbnails(array(
         'label' => 'galerieImage1',
         'id' => 'galerieImage1',
@@ -77,6 +84,9 @@ add_theme_support( 'post-thumbnails' );
 
 add_image_size('submedia', 145, 81, true);
 add_image_size( "tileImage", 300, 0, false );
+
+add_image_size( "personImage", 310, 310, true );
+
 add_image_size( "tileImageRetina", 900, 0, false );
 
 add_image_size( "headerImage", 1280, 0, false );
@@ -96,6 +106,25 @@ function wpfme_footer_admin () {
 }
 add_filter('admin_footer_text', 'wpfme_footer_admin');
 
+
+function create_my_taxonomies() {
+    register_taxonomy(
+        'leistungen',
+        'menschen',
+        array(
+            'labels' => array(
+                'name' => 'Leistungen',
+                'add_new_item' => 'Add New Leistungen',
+                'new_item_name' => "New Movie Leistungen"
+            ),
+            'show_ui' => true,
+            'show_tagcloud' => false,
+            'hierarchical' => true
+        )
+    );
+}
+
+add_action( 'init', 'create_my_taxonomies', 0 );
 
 // Add custom menus
 register_nav_menus( array(
@@ -307,7 +336,7 @@ function metadatenNetzwerkMenschen() {
 				<tr>
 					<td>skype</td>
 					<td><input name="skype" value="' . $skype  . '"></td>
-		skype		</tr>
+				</tr>
 				
 			</table>
 		'; 
@@ -458,7 +487,6 @@ function wpt_event_posttype() {
 			'capability_type' => 'post',
 			'has_archive' => true,
 
-			'rewrite' => false, // Permalinks format
 			'menu_position' => 5,
 			'register_meta_box_cb' => 'add_events_metaboxes'
 
@@ -480,24 +508,23 @@ function wpt_event_posttype() {
 
 		)
 	);
-	
-	register_post_type( 'produkte',
+	*/
+	register_post_type( 'leistungen',
 		array(
 			'labels' => array(
-				'name' => __( 'Produkte' ),
+				'name' => __( 'Leistungen' ),
 			),			
 			'public' => true,
 			'supports' => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
 			'show_in_nav_menus' => true,			
 			'capability_type' => 'post',
-			'rewrite' => array("slug" => "menschen", "with_front" => false), // Permalinks format
 			'menu_position' => 5,
 			'register_meta_box_cb' => 'add_events_metaboxes'
 
 		)
 	);
 
-	*/
+	
 	
 	register_post_type( 'downloads',
 		array(
@@ -508,7 +535,6 @@ function wpt_event_posttype() {
 			'supports' => array( 'title', 'thumbnail', 'editor', 'page-attributes' ),
 			'show_in_nav_menus' => true,			
 			'capability_type' => 'post',
-			'rewrite' => array("slug" => "menschen", "with_front" => false), // Permalinks format
 			'menu_position' => 5,
 			'register_meta_box_cb' => 'add_events_metaboxes'
 
@@ -524,7 +550,6 @@ function wpt_event_posttype() {
 			'supports' => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
 			'show_in_nav_menus' => true,			
 			'capability_type' => 'post',
-			'rewrite' => array("slug" => "menschen", "with_front" => false), // Permalinks format
 			'menu_position' => 5,
 			'register_meta_box_cb' => 'add_events_metaboxes'
 
@@ -554,7 +579,7 @@ function wpt_event_posttype() {
 			'supports' => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
 			'show_in_nav_menus' => true,			
 			'capability_type' => 'post',
-			'rewrite' => array("slug" => "menschen", "with_front" => false), // Permalinks format
+			'' => array("slug" => "menschen", "with_front" => false), // Permalinks format
 			'menu_position' => 5,
 			'register_meta_box_cb' => 'add_events_metaboxes'
 
@@ -570,7 +595,6 @@ function wpt_event_posttype() {
 			'supports' => array( 'title', 'thumbnail', 'page-attributes' ),
 			'show_in_nav_menus' => true,			
 			'capability_type' => 'post',
-			'rewrite' => array("slug" => "menschen", "with_front" => false), // Permalinks format
 			'menu_position' => 5,
 			'register_meta_box_cb' => 'add_events_metaboxes'
 
@@ -586,7 +610,6 @@ function wpt_event_posttype() {
 			'supports' => array( 'title', 'thumbnail', 'page-attributes' ),
 			'show_in_nav_menus' => true,			
 			'capability_type' => 'post',
-			'rewrite' => array("slug" => "menschen", "with_front" => false), // Permalinks format
 			'menu_position' => 5,
 			'register_meta_box_cb' => 'add_events_metaboxes'
 		)
@@ -601,7 +624,6 @@ function wpt_event_posttype() {
 			'supports' => array( 'title', 'thumbnail'),
 			'show_in_nav_menus' => true,			
 			'capability_type' => 'post',
-			'rewrite' => array("slug" => "menschen", "with_front" => false), // Permalinks format
 			'menu_position' => 5,
 			'register_meta_box_cb' => 'add_events_metaboxes'
 		)

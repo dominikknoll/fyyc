@@ -44,7 +44,7 @@
 		</div>
 	</div>
 		<div class="map">
-			<?php include 'html/buildMap.php'; ?>
+			<div id="map-canvas"> </div>
 		</div>
 	<div class="footerBottom">
 		<div class="container mapContainer">	

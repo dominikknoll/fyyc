@@ -20,7 +20,7 @@
 			
 			//print_r($filter);
 						
-			$feed				 = new Tiles($wpdb, "blog", $filter);
+			$feed				 = new Tiles($wpdb, false, "blog", $filter);
 			//$staticMenschenFeed  = new Tiles($wpdb); //empty
 			
 			//$staticMenschenFeed->addFeed(313, "intro");
@@ -59,11 +59,6 @@
 		</div>
 		
 		<?php include 'footer.php'; ?>
-		<foter>
-			<div class="container">	
-				foryouandyourcustomers gibt's in Amsterdam, Genf, München, Wien und Zürich	
-			</div>
-		</footer>
 		
 	</body>	
 </html>

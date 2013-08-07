@@ -9,32 +9,59 @@
 
 		
 		<?php			
-			$feed				 = new Tiles($wpdb, "menschen");
-			$staticMenschenFeed  = new Tiles($wpdb); //empty
+			$feed	= new Menschen($wpdb, ICL_LANGUAGE_CODE);
 			
-			$staticMenschenFeed->addFeed(313, "intro");
-			$staticMenschenFeed->addFeed(313, "contact");
-			//$staticMenschenFeed->addFeed(313, "linkedin");
+			//print_r($feed);
+
 		?>
 	</head>
-	
 	<body>
-		<header>
+		<header> 
 			<div class="container">	
 				<?php include 'html/buildHeader.php'; ?>	
-			</div>
-			<div class="imageContainer">
-				<img src="wp-content/themes/fyyc/img/img.jpg">
+				<?php include 'html/buildMenschenArchiv.php'; ?>	
+				
+				
+				<?php 
+
+				$args = array(
+				  'taxonomy'     => 'leistungen',
+				  'orderby'      => 'name',
+				  'show_count'   => 0,
+				  'pad_counts'   => 0,
+				  'hierarchical' => 1,
+				  'title_li'     => ''
+				);
+				
+				$leistungenTaxonomy = get_categories( $args );
+				
+				?>
+
+								
+				<ul id="filters">
+				
+				
+				<?php
+					echo('<li><a href="*" data-filter="*">show all</a></li>');
+
+					if($leistungenTaxonomy != null){
+						foreach ($leistungenTaxonomy as $value) {
+									$leistungenTaxonomyString = $value->slug;
+									
+									echo('<li><a href="#" data-filter=".'.$leistungenTaxonomyString.'">'.$leistungenTaxonomyString.'</a></li>');
+								}		
+					}				
+				?>
+				
+				</ul>								
+				
 			</div>
 		</header>
 
-		<div class="container containerIsotope test"> 
+		<div class="container containerIsotope"> 
 			<div id="isotope">
 				<?php
-				
-					foreach ($staticMenschenFeed->getTiles() as $index => $value) {
-						$staticMenschenFeed->printTile($index, false);
-					}
+
 					
 					foreach ($feed->getTiles() as $index => $value) {
 						$feed->printTile($index, false);
@@ -42,12 +69,24 @@
 				?>
 			</div>
 		</div>
-		<?php include 'footer.php'; ?>
-		<foter>
-			<div class="container">	
-				foryouandyourcustomers gibt's in Amsterdam, Genf, München, Wien und Zürich	
-			</div>
-		</footer>
 		
+
+		
+		<?php include 'footer.php'; ?>
+		<script>
+			var $container = $('#isotope');
+			// initialize isotope
+			$container.isotope({
+			  // options...
+			});
+			
+			// filter items when filter link is clicked
+			$('#filters a').click(function(){
+			  var selector = $(this).attr('data-filter');
+			  $container.isotope({ filter: selector });
+			  return false;
+			});
+		</script>
 	</body>	
+
 </html>

@@ -54,11 +54,7 @@
 		</div>
 		
 		<?php include 'footer.php'; ?>
-		<foter>
-			<div class="container">	
-				foryouandyourcustomers gibt's in Amsterdam, Genf, München, Wien und Zürich	
-			</div>
-		</footer>
+
 		
 	</body>	
 </html>

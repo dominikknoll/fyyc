@@ -3,10 +3,12 @@
 		var $feedData = false;
 		var $sql = false;
 		var $wpdb = false;
+		var $title = false;
 		
-		function Tiles($wpdb, $siteType = false, $selector = false) {
+		function Tiles($wpdb, $title = false, $siteType = false, $selector = false) {
 			
 			$this->wpdb = $wpdb;
+			$this->title = $title;
 			$this->createSQL($siteType, $selector);
 			$this->initFeed();
 		}
@@ -124,6 +126,8 @@
 			$postdata = get_post( $id, "ARRAY_A");
 				$postTitle = $postdata["post_title"];
 				$postContent = $postdata["post_content"];
+				$guid = $postdata["guid"];
+
 			
 		// Edit		
 			$postTitle = colorupText($postTitle);
@@ -138,10 +142,10 @@
 								Blog
 							</div>
 							<div class="title hyphe">
-								'.$postTitle.'		
+								<a href="'.$guid.'"> '.$postTitle.'</a>		
 							</div>
 							<div class="subtitle">
-								'.get_the_date("l, F j, Y", $id).' by <span style="font-weight:600; color:black">dok</span>		
+								'.get_the_date("l, F j, Y", $id).' by <span class="blackLink"><a>dok</a></span>		
 							</div>
 						</div>	
 						<div class="media">						
@@ -369,7 +373,7 @@
 				<div class="item twitterTile">
 					<div class="twitterHead">
 						<div class="twitterArrow"></div>
-						<img width="45px height="45px" src="http://localhost/foryouandyourcustomers/wp-content/themes/fyyc/img/clausTwitter.jpg">
+						<img width="45px height="45px" src="http://192.168.1.55/foryouandyourcustomers/wp-content/themes/fyyc/img/clausTwitter.jpg">
 						<p class="name"> @'.$user.'</p>
 						<p class="time"> vor 3 Stunden</p>
 					</div>
@@ -644,27 +648,31 @@
 				$this->sql.= $this->sqlHeader("instagram");	
 				$this->sql.= $this->sqlWhere("instagram", 'WHERE meta.meta_key = "postOnFrontpage" AND meta.meta_value ="yes"');
 			
-				$this->sql.= $this->sqlSort();
+				$this->sql.= $this->sqlSort();						
+
 				
 	
 			}
+
 			
 			else if($siteType == "menschen"){
 					
 				$this->sql = $this->sqlHeader("std");
-				$this->sql.= $this->sqlWhere('std', 'WHERE meta.meta_key = "postTarget" AND meta.meta_value LIKE "dok"');
+				$this->sql.= $this->sqlWhere('std', 'WHERE meta.meta_key = "postTarget" AND meta.meta_value LIKE "%'.$this->title.'%"');
 				
 				$this->sql.= 'UNION';	
 				
 				$this->sql.= $this->sqlHeader("twitter");	
-				$this->sql.= $this->sqlWhere("twitter", 'WHERE meta.meta_key = "postTarget" AND meta.meta_value LIKE "dok"');
+				$this->sql.= $this->sqlWhere("twitter", 'WHERE meta.meta_key = "postTarget" AND meta.meta_value LIKE "%'.$this->title.'%"');
 				
 				$this->sql.= 'UNION';	
 				
 				$this->sql.= $this->sqlHeader("instagram");	
-				$this->sql.= $this->sqlWhere("instagram", 'WHERE meta.meta_key = "postTarget" AND meta.meta_value LIKE "dok"');
+				$this->sql.= $this->sqlWhere("instagram", 'WHERE meta.meta_key = "postTarget" AND meta.meta_value LIKE "%'.$this->title.'%"');
 			
 				$this->sql.= $this->sqlSort();
+				
+				//print_r($this->sql);
 			}
 			
 			else if($siteType == "blog"){
@@ -759,7 +767,7 @@
 				(
 					select meta_value 
 						from foryouandyourcustomers.wp_instagramfeed_meta as meta_priority 
-					WHERE meta_priority.twitter_id = posts.id AND meta_priority.meta_key = "postPriority"
+					WHERE meta_priority.parent_id = posts.id AND meta_priority.meta_key = "postPriority"
 				) as factor_priority_name,
 				(SELECT ranking.value from foryouandyourcustomers.wp_addon_ranking as ranking WHERE ranking.type = factor_priority_name) as factor_priority_value,
 				posts.type as factor_type_name,
@@ -770,6 +778,8 @@
 				posts.metalink as "meta_link"
 				
 				FROM foryouandyourcustomers.wp_instagramfeed as posts';
+				print_r($return);
+				
 				break;
 				
 			default:
@@ -818,7 +828,7 @@
 							SELECT id as frontpage_id
 								FROM foryouandyourcustomers.wp_instagramfeed as posts
 								WHERE posts.id in (
-									SELECT meta.twitter_id
+									SELECT meta.parent_id
 									FROM foryouandyourcustomers.wp_instagramfeed_meta as meta
 									'.$query.'
 								)

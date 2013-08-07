@@ -20,8 +20,8 @@
 			<li class="active"><a href="#">Referenzen</a></li>
 			<li><a href="#">Leistungen</a></li>
 			<li><a href="#">Standorte</a></li>
-			<li><a href="http://localhost/foryouandyourcustomers/?menschen=chf" id="naviSlideButtonMenschen">Menschen</a></li>
-			<li><a href="http://localhost/foryouandyourcustomers/blog">Blog</a></li>
+			<li><a href="/foryouandyourcustomers/menschen/" id="naviSlideButtonMenschen">Menschen</a></li>
+			<li><a href="/foryouandyourcustomers/blog">Blog</a></li>
 		</ul>		
         <!-- .nav, .navbar-search, .navbar-form, etc -->
       </div>
@@ -38,12 +38,12 @@
 			<li class="active"><a href="#">Referenzen</a></li>
 			<li><a href="#">Leistungen</a></li>
 			<li><a href="#">Standorte</a></li>
-			<li><a href="http://localhost/foryouandyourcustomers/?menschen=chf" id="naviSlideButtonMenschen">Menschen</a></li>
-			<li><a href="http://localhost/foryouandyourcustomers/blog">Blog</a></li>
+			<li><a href="/foryouandyourcustomers/menschen/" id="naviSlideButtonMenschen">Menschen</a></li>
+			<li><a href="/foryouandyourcustomers/blog">Blog</a></li>
 		</ul>			    
 		<ul class="nav pull-right">	
 			<!--<li><a href="#" style="font-weight:normal; padding-right: 5px;">Deutsch</a></li> -->
-			<li><a href="#">Deutsch</a></li>
+			<li><?php do_action('icl_language_selector'); ?></li>
 		</ul>
 	</div>
 	<div class="navbar-shadow">

@@ -15,7 +15,8 @@
 		<?php			
 
 
-			$feed = new Tiles($wpdb, "frontpage");
+			$feed = new Tiles($wpdb, false, "frontpage");
+
 		?>
 	
 	</head>
@@ -40,45 +41,12 @@
 
 		
 		<?php //include 'buildFooter.php'; ?>
-		
+						    
+
+				<?php include 'footer.php'; ?>
+
 
 	</body>
-	
-	
-	
-	
-	<script>
 
-		var jQuerycontainer = jQuery('#isotope');
-		jQuerycontainer.imagesLoaded( function(){
-		  jQuerycontainer.isotope({
-		  itemSelector: '.item',
-		  layoutMode : 'masonry'
-		   });	
-		});
-		
-		
-		$(document).ready(function() {
-		        // $('#slide').slideDown("slow");
-		}); 
-		$("#heroSlideButton").click(function () {
-			if ($("#heroSlider").is(":hidden")) {
-				$("#heroSlider").slideDown("slow");
-				} else {
-				$("#heroSlider").slideUp("slow");
-				}		
-	    });
-	    
-	    $(document).ready(function() {
-		        // $('#slide').slideDown("slow");
-		}); 
-		$("#naviSlideButtonMenschen").click(function () {
-			if ($("#naviSliderMenschen").is(":hidden")) {
-				$("#naviSliderMenschen").slideDown("slow");
-				} else {
-				$("#naviSliderMenschen").slideUp("slow");
-				}		
-	    });
-
-	</script>
 </html>
+
