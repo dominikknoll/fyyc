@@ -13,3 +13,11 @@
     line-height: 35px !important;
   }
 }
+header {
+  background: url("../img/backgroundFrontpage.jpg") repeat-x bottom;
+  background-color: white;
+  overflow: hidden;
+}
+.backhome {
+  display: none;
+}

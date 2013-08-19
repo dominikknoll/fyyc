@@ -3,15 +3,39 @@
 		var $feedData = false;
 		var $sql = false;
 		var $wpdb = false;
-		var $title = false;
 		
-		function Tiles($wpdb, $title = false, $siteType = false, $selector = false) {
+		
+		var $title 	  = false;
+		var $siteType = false;
+		var $blogSelector = false;
+		var $sprueche = false;
+		
+		
+		var $language =  ICL_LANGUAGE_CODE;
+		
+
+		
+		function Tiles($wpdb, $args) {
 			
 			$this->wpdb = $wpdb;
-			$this->title = $title;
-			$this->createSQL($siteType, $selector);
+
+			$this->title 		= $this->getArgument($args, "title");
+			$this->siteType 	= $this->getArgument($args, "siteType");
+			
+			$this->blogSelector = $this->getArgument($args, "selector");
+			
+			$this->language =  ICL_LANGUAGE_CODE;
+
+			$this->createSQL($this->siteType, $this->blogSelector);
 			$this->initFeed();
 		}
+		
+		
+		function getArgument($args, $type) {
+			if(isset($args[$type])) return $args[$type];
+			else return false;
+		}
+		
 		
 		function initFeed() {
 				
@@ -19,6 +43,47 @@
 			
 			$this->feedData = $this->wpdb->get_results($this->sql);
 	
+		}
+		
+		function initSprueche(){
+		
+		
+		
+			$sql = 'SELECT post_content FROM foryouandyourcustomers.wp_posts 
+			
+					INNER JOIN foryouandyourcustomers.wp_icl_translations 
+												
+					ON wp_posts.ID=wp_icl_translations.element_id
+												
+					WHERE post_type = "spruch" AND post_status="publish" AND language_code="'.$this->language.'" AND 
+					wp_icl_translations.element_type="post_spruch"
+					
+					ORDER BY RAND()';
+					
+			$this->sprueche = $this->wpdb->get_results($sql);
+					
+		}
+		
+		function printSpruch($id) {
+			
+		
+			if(!$this->sprueche) {
+			
+				$this->initSprueche();
+			}
+			
+			if(isset($this->sprueche[$id])) {
+			
+				$spruchTxt = colorupText($this->sprueche[$id]->post_content);
+			
+				echo'
+				<div class="item spruchTile">
+					<div class="main">
+						'.$spruchTxt.'
+					</div>
+				</div>
+				';
+			}	
 		}
 		
 		function addFeed($id, $type, $title = false, $content = false) {
@@ -45,6 +110,26 @@
 			}
 
 		}
+		
+		function get_special_metadata($table, $selector, $id){
+
+			$sql = 'SELECT meta_key, meta_value FROM foryouandyourcustomers.'.$table.' Where '.$table.'.'.$selector.'="'.$id.'"';
+
+			$return = $this->wpdb->get_results($sql);
+			
+			return $return;
+		}
+		
+		function get_special_specific_metadata($metadata, $selector){
+			foreach ($metadata as $a) {
+				if($a->meta_key == $selector){
+					return $a->meta_value;
+				}
+			
+			}
+		}
+		
+		
 		
 		function printTest(){
 			print_r($this->feedData);
@@ -85,6 +170,9 @@
 				case 'galerie':
 					$this->generateGalerie($index);
 				break;
+				case 'slideshare':
+					$this->generateSlideshare($index);
+				break;
 				
 				
 				case 'intro':
@@ -94,9 +182,11 @@
 					$this->generateContact($index);
 				break;
 				
+				case 'leistungenIntro':
+					$this->generateLeistungenIntro($index);
+				break;
 				
-				
-				
+
 				default: 
 					//echo("<div class='item'><div class='top'><div class='tag'>".$this->feedData[$index]->post_type);
 					//if($debug) $this->debug($this->feedData[$index]);
@@ -125,7 +215,7 @@
 			
 			$postdata = get_post( $id, "ARRAY_A");
 				$postTitle = $postdata["post_title"];
-				$postContent = $postdata["post_content"];
+				$postContent = $postdata["post_excerpt"];
 				$guid = $postdata["guid"];
 
 			
@@ -235,6 +325,78 @@
 				</div>
 			';
 			return true;
+		}		
+		
+		function generateSlideshare($index){
+			
+			
+			// Load
+			$id = $this->feedData[$index]->post_id;
+			
+			$metadata = get_post_meta($id, false);
+				$subtitle  = $metadata["subtitle"][0];
+				$medialink = $metadata["medialink"][0];
+						
+			$postdata = get_post( $id, "ARRAY_A");
+				$postTitle = $postdata["post_title"];
+			
+		// Edit		
+			$postTitle = colorupText($postTitle);	
+
+		// Print
+			echo'
+				<div class="item slideshareTile">
+					<div class="main">
+	
+						<div class="top">
+							<div class="tag">
+								Slideshare
+							</div>
+							<div class="title hyphe">
+								'.$postTitle.'		
+							</div>
+							<div class="subtitle">
+								'.$subtitle.'		
+							</div>
+						</div>	
+						<div class="media">
+						
+							<iframe 
+							src="http://de.slideshare.net/slideshow/embed_code/9094451?rel=0" 
+							width="308" 
+							height="226" 
+							frameborder="0" 
+							marginwidth="0" 
+							marginheight="0" 
+							scrolling="no" 
+							style="max-width:427px;border:1px solid #CCC;border-width:1px 1px 0" 
+							allowfullscreen webkitallowfullscreen mozallowfullscreen> 
+							
+							</iframe> 
+		
+						</div>
+						<div class="footer">
+							<a href="'.$medialink.'">
+							<div class="link">
+								
+							</div>
+							</a>
+							<div class="share">
+								<div class="shareCount">
+									15
+								</div>
+							</div>
+							</div>
+
+					</div>
+					<div class="shadow">
+					</div>
+				</div>
+
+			';
+			return true;
+			
+			
 		}
 		
 		function generateVideo($index){
@@ -357,13 +519,20 @@
 			return true;
 		}
 		
+		
+		
 		function generateTwitter($index){
 
 		// Load
 			$id	  	   = $this->feedData[$index]->post_id;
 			$user	   = $this->feedData[$index]->post_title;
 			$content   = $this->feedData[$index]->post_content;
-
+			
+			//$var = aa();
+			
+			$metadata  = $this->get_special_metadata("wp_twitterfeed_meta", "twitter_id", $id);
+			
+			$usrImgUrl = $this->get_special_specific_metadata($metadata, "usrImageUrl");
 		// Edit		
 
 
@@ -373,7 +542,7 @@
 				<div class="item twitterTile">
 					<div class="twitterHead">
 						<div class="twitterArrow"></div>
-						<img width="45px height="45px" src="http://192.168.1.55/foryouandyourcustomers/wp-content/themes/fyyc/img/clausTwitter.jpg">
+						<img width="45px" height="45px" src="'.$usrImgUrl.'">
 						<p class="name"> @'.$user.'</p>
 						<p class="time"> vor 3 Stunden</p>
 					</div>
@@ -405,6 +574,10 @@
 			$content   = $this->feedData[$index]->post_content;
 			$content   = $this->feedData[$index]->post_content;
 			$metalink   = $this->feedData[$index]->meta_link;
+			
+			$metadata  = $this->get_special_metadata("wp_instagramfeed_meta", "parent_id", $id);
+			
+			$likes = $this->get_special_specific_metadata($metadata, "likes");
 
 		// Edit		
 
@@ -433,7 +606,7 @@
 							</div>
 							<div class="share">
 								<div class="shareCount">
-									15
+									'.$likes.'
 								</div>
 							</div>
 						</div>
@@ -546,7 +719,7 @@
 			echo'
 				<div class="item introTile">
 					<div class="main">
-	
+					
 						<div class="content">
 							'.$content.'
 						</div>
@@ -558,6 +731,41 @@
 			';
 			return true;
 		}
+		
+		function generateLeistungenIntro($index){
+
+		// Load
+			$id	  	   = $this->feedData[$index]->post_id;
+			
+			$metadata = get_post_meta($id, false);
+
+			$postdata = get_post( $id, "ARRAY_A");
+				$post_content = $postdata["post_content"];
+				$post_content = colorupText($post_content);
+				
+
+		// Edit		
+
+
+			
+		// Print
+			echo'
+				<div class="item introTile">
+					<div class="main">
+					
+						<div class="content">
+							'.$post_content.'
+						</div>
+					</div>
+					<div class="shadow">
+					</div>
+
+				</div>
+			';
+			return true;
+		}
+		
+		
 		
 		function generateContact($index){
 
@@ -636,26 +844,27 @@
 			if($siteType == "frontpage"){
 							
 				$this->sql = $this->sqlHeader("std");
-				$this->sql.= $this->sqlWhere('std', 'WHERE meta.meta_key = "postOnFrontpage" AND meta.meta_value ="yes"');
+				$this->sql.= $this->sqlWhere('std', 'WHERE meta.meta_key = "postOnFrontpage" AND meta.meta_value ="on"');
 				
 				$this->sql.= 'UNION';	
 				
 				$this->sql.= $this->sqlHeader("twitter");	
-				$this->sql.= $this->sqlWhere("twitter", 'WHERE meta.meta_key = "postOnFrontpage" AND meta.meta_value ="yes"');
+				$this->sql.= $this->sqlWhere("twitter", 'WHERE meta.meta_key = "postOnFrontpage" AND meta.meta_value ="on"');
 				
 				$this->sql.= 'UNION';	
 				
 				$this->sql.= $this->sqlHeader("instagram");	
-				$this->sql.= $this->sqlWhere("instagram", 'WHERE meta.meta_key = "postOnFrontpage" AND meta.meta_value ="yes"');
+				$this->sql.= $this->sqlWhere("instagram", 'WHERE meta.meta_key = "postOnFrontpage" AND meta.meta_value ="on"');
 			
 				$this->sql.= $this->sqlSort();						
-
+				
+				//print_r($this->sql);
 				
 	
 			}
 
 			
-			else if($siteType == "menschen"){
+			else if($siteType == "menschen" or $siteType == "leistungen"){
 					
 				$this->sql = $this->sqlHeader("std");
 				$this->sql.= $this->sqlWhere('std', 'WHERE meta.meta_key = "postTarget" AND meta.meta_value LIKE "%'.$this->title.'%"');
@@ -679,8 +888,12 @@
 						
 				$this->sql = $this->sqlHeader("std");
 				
-				$category_query = 'WHERE false OR term_taxonomy_id = "'.$selector[0].' "';
-				if($selector[0] == null){$category_query="";}
+				
+				if($selector["art"]=="tag"){
+				}
+
+				$category_query = 'WHERE false OR term_taxonomy_id = "'.$selector["id"].' "';
+				if($selector["id"] == null){$category_query="";}
 				
 				
 				$this->sql.= '
@@ -694,6 +907,10 @@
 							)
 						)
 							AND posts.post_status = "publish" 
+							
+							AND (SELECT translations.language_code 
+								FROM foryouandyourcustomers.wp_icl_translations AS translations
+								WHERE posts.id = translations.element_id) = "'.$this->language.'"
 	
 							AND posts.post_type = "post"
 	
@@ -702,7 +919,6 @@
 									'.$category_query.'
 							)
 					';	
-					
 					
 					
 					$this->sql.= $this->sqlSort();
@@ -732,7 +948,12 @@
 				posts.post_type,
 				posts.post_title as post_title,
 				posts.post_content as post_content,
-				"false" as "meta_link"
+				"false" as "meta_link",
+				
+				(SELECT translations.language_code 
+				FROM foryouandyourcustomers.wp_icl_translations AS translations
+				WHERE posts.id = translations.element_id) as language
+
 				
 				
 				FROM foryouandyourcustomers.wp_posts as posts ';
@@ -754,7 +975,8 @@
 				posts.type,
 				posts.username as post_title,
 				posts.content as post_content,
-				posts.metalink as "meta_link"
+				posts.metalink as "meta_link",
+				0 AS language
 				
 				FROM foryouandyourcustomers.wp_twitterfeed as posts ';
 				break;
@@ -775,10 +997,13 @@
 				posts.type,
 				posts.username as post_title,
 				posts.content as post_content,
-				posts.metalink as "meta_link"
+				posts.metalink as "meta_link",
+				0 AS language
 				
 				FROM foryouandyourcustomers.wp_instagramfeed as posts';
-				print_r($return);
+				
+				
+				//print_r($return);
 				
 				break;
 				
@@ -807,6 +1032,10 @@
 								)
 							)
 							AND posts.post_status = "publish"
+							
+							AND (SELECT translations.language_code 
+							FROM foryouandyourcustomers.wp_icl_translations AS translations
+							WHERE posts.id = translations.element_id) = "'.$this->language.'"
 		
 							';
 				break;
@@ -846,15 +1075,13 @@
 	
 	function sqlSort(){
 		return 'ORDER BY (factor_date * factor_priority_value * factor_type_value) ASC
-				LIMIT 80 ';
+				LIMIT 36 ';
 	}
 	
+	
+
+	
 }
 	
-function colorupText($var){
-	$var = str_replace("[", "<span style='color:black'>", $var);
-	$var = str_replace("]", "</span>", $var);
-	$var = str_replace("foryouandyourcustomers", "<span style='color:#73be46'>foryouandyourcustomers</span>", $var);
-	return $var;
-}
+
 ?>

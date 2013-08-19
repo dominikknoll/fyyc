@@ -28,6 +28,8 @@ body{
 	padding: 0px;
 }
 
+
+
 .blackLink a{
 	color: black !important;
 	font-weight: 500;
@@ -45,9 +47,58 @@ body{
 	overflow: hidden;
 }
 
+#lang_sel{
+	height: inherit !important;
+	padding-top: 6px;
+}
+
+#filters{
+	display:inline-block;
+	  margin:0;
+	  width:100%;
+	  font-size: 12px;
+	  padding-top: 60px;
+	  padding-bottom: 30px;
+	  
+	.col{
+		float: left;
+		margin: 0px 15px 0px 15px;		
+		li{
+			width: 302px;
+			list-style: none;
+			border: 1px #cccccc solid;
+			padding: 3px;
+			margin: 9px 0px 0px  0px;
+			line-height: 20px;
+
+			
+			div{
+				background-color:#dddddd;
+				padding: 3px 10px 8px;
+				height: 14px;
+				width: 100%
+				position: relative;
+				a{
+					position: absolute;
+					width: 290px;
+					color: #333333;
+					font-weight: 500;
+
+					
+				}
+				a:hover{
+					text-decoration: none;
+				}
+			}
+		}
+		li:hover{
+			border: 1px black solid;
+		}
+	}
+}
+
 header{
-	background: url("img/backgroundFrontpage.jpg") repeat-x bottom;
-	background-color: white;
+
     overflow: hidden;
 
 	.container{
@@ -59,15 +110,36 @@ header{
 			padding-top:30px;
 			opacity: 0.90;
 			
+			.backhome{
+						background: url("img/backhome.png") no-repeat left center;
+						position:absolute;
+						width:10px;
+						padding-top:22px;
+						
+						left:-5px;
+						
+						a{
+							padding-right: 0px;
+							padding-left:9px;
+						}
+
+					}
+			
+			
 			.navbar-inner{
 				background-color: white;
 				padding-top: 3px;
 				padding-left: 15px;
 				padding-right: 15px;
+				
+				margin-left:15px;
+				margin-right:15px;
 			
 			}
 			.navbar-shadow{
 				background: url("img/navibg.png") no-repeat scroll center 0px;
+				margin-left: 15px;
+				margin-right: 15px;
 			
 			}
 		}
@@ -77,16 +149,22 @@ header{
 	
 	.hero-unit{
 		margin-top: 95px;
-
+		padding: 0px;
 		color: #999999;
 		font-size: 48px;
 		line-height: 61px;
-		padding: 30px;
 		text-align: justify;
 		text-align: left;
 		
-		.btn{
+		
+		.titeltxt{
+			padding: 0px 45px;
+		}
+		
+		
+		#heroSlideButton{
 			margin-top: 50px;
+			
 			margin-left: auto;
 			margin-right: auto;
 			display: block;
@@ -95,10 +173,39 @@ header{
 			font-size: 14px;
 			font-weight: bold;
 			
+			color: white;
+			
+			text-transform: uppercase;
+
+			border: none !important;
+			
+			background-color: #73be46;
+
+			
+			-webkit-border-radius: 2px;
+			-moz-border-radius: 2px;
+			border-radius: 2px;
+
+			box-shadow: 0px 0px 3px 0px rgb( 0, 0, 0 );
+			
+			span{
+				background: url("img/icons/arrowdown.png") no-repeat scroll left;	
+				display: inline-block;
+				width: 21px;
+				background-position-y: 2px;
+				margin-left: 10px;
+
+			}
+				
+			
+			
+			
 			
 		}	
 
 	}
+	
+
 
 	
     .imageContainer{
@@ -123,6 +230,15 @@ header{
 }
 
 
+#lang_sel_list a, #lang_sel_list a:visited{
+	font-size: 14px;
+	padding:10px 10px;
+	font-weight: 500;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
+
 
 .test{
 	margin-top: -93px;
@@ -136,7 +252,7 @@ header{
 }
 
 .container{
-	width: 996px;
+	width: 1024px;
 	position: relative;
 
 }
@@ -145,10 +261,23 @@ header{
 	width: 1024px;
 }
 
+.spruchTile{
+	width: 990px;
+	font-size: 48px;
+	line-height: 61px;
+	
+
+}
 
 @media (min-width: 768px) and (max-width: 1020px) {	
 	.container{
-	width: 650px;
+	width: 680px;
+	}
+	
+	.spruchTile{
+		width: 680px;
+		font-size: 30px;
+		line-height: 42px;
 	}
 	
 	.containerIsotope{
@@ -163,6 +292,15 @@ header{
 	
 	.containerIsotope{
 		width: 340px;
+	}
+	
+	.spruchTile{
+		width: 340px;
+		.main{
+			font-size: 24px;
+			line-height: 30px;
+		}
+		
 	}
 }
 
@@ -295,6 +433,8 @@ header{
 .postTile{
 		.main{
 			background: url("img/tileIcons/blog.jpg") no-repeat scroll left top;	
+			
+			
 		background-position: 30px 20px;
 		background-color: white;
 		
@@ -323,6 +463,17 @@ header{
 				padding-left: 43px;	
 			}
 		}
+		.footer{
+
+			.share{
+
+				.shareCount{
+
+					
+				}
+			
+			}
+		}
 	}
 }
 
@@ -330,6 +481,8 @@ header{
 .veranstaltungsTile{
 	.main{
 		background: url("img/tileIcons/veranstaltung.jpg") no-repeat scroll left top;	
+		
+				
 		background-position: 30px 20px;
 		background-color: white;
 		
@@ -346,6 +499,7 @@ header{
 				font-size: 12px;
 			}
 		}
+		
 	}
 
 }
@@ -355,6 +509,16 @@ header{
 
 	}	
 }
+
+
+.slideshareTile{
+	.main{
+		.media{
+			height: inherit;
+		}
+	}
+}
+
 
 .contactTile{
 	.main{
@@ -508,8 +672,8 @@ header{
 		
 				.tag{
 					text-align: center;
-					color: #333;
-					border-bottom: 1px solid #666666;
+					border-bottom: 1px solid #999999;
+					padding-bottom: 10px;
 				
 				}
 				.title{
@@ -525,9 +689,9 @@ header{
 			.media{
 				height: auto;
 				img{
-					-webkit-border-radius: 1000000000px;
-					-moz-border-radius: 1000000000px;
-					border-radius: 1000000000px;		
+					-webkit-border-radius: 170px;
+					-moz-border-radius: 170px;
+					border-radius: 170px;		
 					
 					.box-shadow();		
 				}
@@ -543,6 +707,22 @@ header{
 		height: 0px;
 	}
 
+	
+}
+
+.spruchTile{
+	.main{
+		background: none;
+		box-shadow: none;
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		
+		color: #999999;
+		
+		padding: 30px;
+		text-align: justify;
+		text-align: left;
+	}
 	
 }
 

@@ -18,7 +18,7 @@
       <div class="nav-collapse collapse">
       <ul class="nav">
 			<li class="active"><a href="#">Referenzen</a></li>
-			<li><a href="#">Leistungen</a></li>
+			<li><a href="/foryouandyourcustomers/leistungen/">Leistungen</a></li>
 			<li><a href="#">Standorte</a></li>
 			<li><a href="/foryouandyourcustomers/menschen/" id="naviSlideButtonMenschen">Menschen</a></li>
 			<li><a href="/foryouandyourcustomers/blog">Blog</a></li>
@@ -33,10 +33,12 @@
 
 
 <div class="navbar hidden-phone">
+	<div class="backhome"><a href="/foryouandyourcustomers/">&nbsp;</a></div>
+
 	<div class="navbar-inner">
 		<ul class="nav">
 			<li class="active"><a href="#">Referenzen</a></li>
-			<li><a href="#">Leistungen</a></li>
+			<li><a href="/foryouandyourcustomers/leistungen/">Leistungen</a></li>
 			<li><a href="#">Standorte</a></li>
 			<li><a href="/foryouandyourcustomers/menschen/" id="naviSlideButtonMenschen">Menschen</a></li>
 			<li><a href="/foryouandyourcustomers/blog">Blog</a></li>

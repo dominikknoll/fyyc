@@ -17,7 +17,7 @@ maximum-scale = 1 <!-- Maximaler Skalierungsfaktor. Hier 100% = scharfe Pixeldar
 
 
 
-<script src="http://code.jquery.com/jquery.js"></script>
+<script src="<?php echo get_stylesheet_directory_uri()?>/js/jquery.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri()?>/js/bootstrap.min.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri()?>/js/jquery.isotope.min.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri()?>/js/jquery.hypher.js"></script>
@@ -30,8 +30,19 @@ maximum-scale = 1 <!-- Maximaler Skalierungsfaktor. Hier 100% = scharfe Pixeldar
 </script>
 
 <?php 
-	include("wp-content/themes/fyyc/php/Tiles.php");	
+	include("wp-content/themes/fyyc/php/stuff.php");
+
+	include("wp-content/themes/fyyc/php/Tiles.php");
+	
+	
+	include("wp-content/themes/fyyc/php/Gabelseiten.php");	
+	
 	include("wp-content/themes/fyyc/php/Menschen.php");	
+	include("wp-content/themes/fyyc/php/Leistungen.php");	
+	
+	include("wp-content/themes/fyyc/php/Widgets.php");	
+	
+	
 
 	include("wp-content/themes/fyyc/plugins/multiplePostThumbnails/multi-post-thumbnails.php");
 ?>
@@ -83,6 +94,9 @@ maximum-scale = 1 <!-- Maximaler Skalierungsfaktor. Hier 100% = scharfe Pixeldar
 		  // to the map type control.
 		  var mapOptions = {
 		    zoom: 18,
+		    draggable: true,
+		    overviewMapControl: false,
+		    scrollwheel: false,
 		    center: new google.maps.LatLng(48.198096, 16.359645),
 		    mapTypeControlOptions: {
 		      mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']

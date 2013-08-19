@@ -38,9 +38,50 @@ body {
   height: 168px;
   overflow: hidden;
 }
+#lang_sel {
+  height: inherit !important;
+  padding-top: 6px;
+}
+#filters {
+  display: inline-block;
+  margin: 0;
+  width: 100%;
+  font-size: 12px;
+  padding-top: 60px;
+  padding-bottom: 30px;
+}
+#filters .col {
+  float: left;
+  margin: 0px 15px 0px 15px;
+}
+#filters .col li {
+  width: 302px;
+  list-style: none;
+  border: 1px #cccccc solid;
+  padding: 3px;
+  margin: 9px 0px 0px  0px;
+  line-height: 20px;
+}
+#filters .col li div {
+  background-color: #dddddd;
+  padding: 3px 10px 8px;
+  height: 14px;
+  width: 100%
+				position: relative;
+}
+#filters .col li div a {
+  position: absolute;
+  width: 290px;
+  color: #333333;
+  font-weight: 500;
+}
+#filters .col li div a:hover {
+  text-decoration: none;
+}
+#filters .col li:hover {
+  border: 1px black solid;
+}
 header {
-  background: url("img/backgroundFrontpage.jpg") repeat-x bottom;
-  background-color: white;
   overflow: hidden;
 }
 header .container .navbar {
@@ -50,25 +91,43 @@ header .container .navbar {
   padding-top: 30px;
   opacity: 0.90;
 }
+header .container .navbar .backhome {
+  background: url("img/backhome.png") no-repeat left center;
+  position: absolute;
+  width: 10px;
+  padding-top: 22px;
+  left: -5px;
+}
+header .container .navbar .backhome a {
+  padding-right: 0px;
+  padding-left: 9px;
+}
 header .container .navbar .navbar-inner {
   background-color: white;
   padding-top: 3px;
   padding-left: 15px;
   padding-right: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 header .container .navbar .navbar-shadow {
   background: url("img/navibg.png") no-repeat scroll center 0px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 header .hero-unit {
   margin-top: 95px;
+  padding: 0px;
   color: #999999;
   font-size: 48px;
   line-height: 61px;
-  padding: 30px;
   text-align: justify;
   text-align: left;
 }
-header .hero-unit .btn {
+header .hero-unit .titeltxt {
+  padding: 0px 45px;
+}
+header .hero-unit #heroSlideButton {
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
@@ -77,6 +136,21 @@ header .hero-unit .btn {
   width: 240px;
   font-size: 14px;
   font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  border: none !important;
+  background-color: #73be46;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  box-shadow: 0px 0px 3px 0px #000000;
+}
+header .hero-unit #heroSlideButton span {
+  background: url("img/icons/arrowdown.png") no-repeat scroll left;
+  display: inline-block;
+  width: 21px;
+  background-position-y: 2px;
+  margin-left: 10px;
 }
 header .imageContainer {
   display: block;
@@ -94,6 +168,13 @@ header .imageContainer img {
   -moz-box-shadow: 0px 0px 3px #888888;
   -webkit-box-shadow: 0px 0px 3px #888888;
 }
+#lang_sel_list a,
+#lang_sel_list a:visited {
+  font-size: 14px;
+  padding: 10px 10px;
+  font-weight: 500;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
 .test {
   margin-top: -93px;
 }
@@ -103,15 +184,25 @@ header .imageContainer img {
   margin: 10px 15px 10px 15px;
 }
 .container {
-  width: 996px;
+  width: 1024px;
   position: relative;
 }
 .containerIsotope {
   width: 1024px;
 }
+.spruchTile {
+  width: 990px;
+  font-size: 48px;
+  line-height: 61px;
+}
 @media (min-width: 768px) and (max-width: 1020px) {
   .container {
-    width: 650px;
+    width: 680px;
+  }
+  .spruchTile {
+    width: 680px;
+    font-size: 30px;
+    line-height: 42px;
   }
   .containerIsotope {
     width: 680px;
@@ -123,6 +214,13 @@ header .imageContainer img {
   }
   .containerIsotope {
     width: 340px;
+  }
+  .spruchTile {
+    width: 340px;
+  }
+  .spruchTile .main {
+    font-size: 24px;
+    line-height: 30px;
   }
 }
 @media (min-width: 767px) {
@@ -251,6 +349,9 @@ header .imageContainer img {
 .veranstaltungsTile .main .content p {
   font-size: 12px;
 }
+.slideshareTile .main .media {
+  height: inherit;
+}
 .contactTile .main .top {
   margin-top: 0px;
 }
@@ -365,8 +466,8 @@ header .imageContainer img {
 }
 .menschenTile .main .top .tag {
   text-align: center;
-  color: #333;
-  border-bottom: 1px solid #666666;
+  border-bottom: 1px solid #999999;
+  padding-bottom: 10px;
 }
 .menschenTile .main .top .title {
   text-align: center;
@@ -381,9 +482,9 @@ header .imageContainer img {
   height: auto;
 }
 .menschenTile .main .media img {
-  -webkit-border-radius: 1000000000px;
-  -moz-border-radius: 1000000000px;
-  border-radius: 1000000000px;
+  -webkit-border-radius: 170px;
+  -moz-border-radius: 170px;
+  border-radius: 170px;
   box-shadow: 0 0 3px #888888;
   -moz-box-shadow: 0 0 3px #888888;
   -webkit-box-shadow: 0 0 3px #888888;
@@ -392,6 +493,16 @@ header .imageContainer img {
   background: none;
   width: 100%;
   height: 0px;
+}
+.spruchTile .main {
+  background: none;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  color: #999999;
+  padding: 30px;
+  text-align: justify;
+  text-align: left;
 }
 footer .mapContainer {
   color: #999999;

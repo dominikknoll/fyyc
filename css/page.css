@@ -1,8 +1,5 @@
-.navbar-shadow {
-  background: url("img/navibgHard.png") no-repeat scroll center 0px !important;
-}
 header {
-  background: url("img/backgroundFrontpage.jpg") repeat-x bottom #ffffff;
+  background: url("../img/backgroundFrontpage.jpg") repeat-x bottom #ffffff;
 }
 header .imageContainer {
   padding-bottom: 8px;

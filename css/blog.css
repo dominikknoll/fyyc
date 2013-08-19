@@ -51,6 +51,27 @@ header {
 .blogMain .main .top .title {
   padding-top: 0px;
 }
+.blogNavi .item .main {
+  padding-bottom: 25px;
+}
+.blogNavi .item h3 {
+  margin: 0px;
+  padding: 0px;
+}
+.blogNavi .item h4 {
+  font-weight: normal;
+  font-size: 12px;
+  margin: 0px;
+  padding: 0px;
+  color: #999999;
+  width: 100%;
+  margin-top: 3px;
+}
+.blogNavi .item .border {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
 @media (min-width: 980px) {
   .blogMain .item:first-child {
     width: 650px;
@@ -115,86 +136,22 @@ header {
   padding-bottom: 20px;
   margin: 0px;
 }
-.postTileSingle {
-  font-size: 10px;
-  color: #444;
-  background: #ffffff url(baseline.png);
+#filters {
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
-.postTileSingle p,
-.postTileSingle li,
-.postTileSingle th,
-.postTileSingle td {
-  font-size: 1.6em;
-  line-height: 1.5em;
+#filters .col {
+  margin: 0px 0px 0px 0px;
 }
-.postTileSingle p {
-  margin-bottom: 1.5em;
+#filters .col li {
+  width: 243px;
 }
-.postTileSingle ul,
-.postTileSingle ol {
-  margin-bottom: 2.4em;
+#filters #showMoreTags {
+  font-size: 14px;
+  font-weight: 500;
+  padding-top: 15px;
+  display: inline-block;
 }
-.postTileSingle h3,
-.postTileSingle h2,
-.postTileSingle h1 {
-  font-weight: bold;
-  line-height: 1.5em;
-}
-.postTileSingle h3 {
-  font-size: 1.6em;
-}
-.postTileSingle h2 {
-  font-size: 2.4em;
-  padding: .5833em 0 0;
-  margin-bottom: .9166em;
-}
-.postTileSingle h1 {
-  font-size: 3.2em;
-  padding: 12px 0 0;
-  margin-bottom: .59em;
-}
-.postTileSingle table {
-  border-collapse: collapse;
-  margin-top: 3.6em;
-  margin-bottom: 3.6em;
-  table-layout: fixed;
-  width: 100%;
-}
-.postTileSingle th {
-  font-weight: normal;
-}
-.postTileSingle th,
-.postTileSingle td {
-  border-top: .0625em solid #ccc;
-  padding: .6875em 1em .75em;
-  vertical-align: top;
-}
-.postTileSingle .numeric {
-  text-align: right;
-}
-.postTileSingle td.numeric {
-  font-family: 'Anonymous Pro', monospace;
-}
-.postTileSingle th[scope="row"] {
-  padding-left: 0;
-  text-align: left;
-  white-space: nowrap;
-}
-.postTileSingle #sizer {
-  width: 89em;
-  margin: 0 auto;
-  overflow: auto;
-}
-.postTileSingle .main-content {
-  float: left;
-  width: 51em;
-  padding: 2.4em 2em;
-}
-.postTileSingle .supplementary-content {
-  float: left;
-  width: 30em;
-  padding: 2.4em 2em;
-}
-.postTileSingle .banner {
-  margin-bottom: 1.6em;
+.categoriesFilter li {
+  margin-top: 2px;
 }

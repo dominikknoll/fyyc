@@ -1,32 +1,30 @@
 <?php
-	class Menschen {
-		var $feedData = false;
-		var $sql = false;
-		var $wpdb = false;
-		var $language = false;
-		
-		function Menschen($wpdb, $language = false) {
-			
-			$this->wpdb = $wpdb;
-			$this->language = $language;
-			$this->createSQL($language);
-			$this->initFeed();
-		}
-		
-		function initFeed() {
 
-			$this->feedData = $this->wpdb->get_results($this->sql);
+/*
+Class Gabelseiten
+
+Variables
+var $feedData = false;
+var $sql = false;
+var $wpdb = false;
+var $language = false;
+
+Methods
+Gabelseiten
+initFeed
+getTiles
+countFeedData
+
+
+*/
+	class Menschen extends Gabelseiten{
+		
+		
 	
-		}		
-
-		function getTiles() {
-			return $this->feedData;
-		}
-		
 		function printTile($index, $debug = false) {
 			$this->generateMensch($index);						
 		}
-
+	
 		function generateMensch($index){
 
 			// Load
@@ -77,7 +75,7 @@
 						</div>
 						
 						<div class="media">
-							<img src="'.$portraitUrl.'" class="image">
+							<img width="310" height="310" src="'.$portraitUrl.'" class="image">
 						</div>
 						
 
@@ -97,9 +95,11 @@
 							
 							  ON wp_posts.ID=wp_icl_translations.element_id
 							
-							  WHERE post_type = "menschen" AND post_status="publish" AND language_code="'.$language.'" AND wp_icl_translations.element_type="post_menschen"';	
-		}
-		
-}
+							  WHERE post_type = "menschen" AND post_status="publish" AND language_code="'.$language.'" AND wp_icl_translations.element_type="post_menschen"
+							  
+							  ORDER BY RAND()
+							  ';	
+		}		
+	}
 	
 ?>

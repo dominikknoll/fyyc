@@ -2,30 +2,62 @@
 <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=utf-8">
 
 
+
 <html>
 	<head>
 		<?php get_header(); wp_head(); ?>
 
-		<link href="<?php echo get_stylesheet_directory_uri()?>/blog.css" rel="stylesheet" media="screen">
+		<link href="<?php echo get_stylesheet_directory_uri()?>/css/blog.css" rel="stylesheet" media="screen">
 
-		
+
 		<?php			
 		
-			$category_name = get_query_var('cat');
+
+			if((get_query_var('cat')) 	 != null) $category_id = get_query_var('cat');
 			
-			$filter = array(
-			    "filter" => "category",
-			    0 		 => $category_name,
-			);
+			if((get_query_var('tag_id')) != null){
+				
+				$category_id = get_query_var('tag_id');
+
+				$term = get_term( $category_id, "post_tag");
+	
+				//print_r($term);
+				
+				$category_id = $term->term_taxonomy_id;
 			
-			//print_r($filter);
-						
-			$feed				 = new Tiles($wpdb, false, "blog", $filter);
-			//$staticMenschenFeed  = new Tiles($wpdb); //empty
+			}			
+			//$args = array();
+			//$args['siteType'] = "blog";
+			//$args['selector'] = $filter;
 			
-			//$staticMenschenFeed->addFeed(313, "intro");
-			//$staticMenschenFeed->addFeed(313, "contact");
-			//$staticMenschenFeed->addFeed(313, "linkedin");
+	
+			//$feed= new Tiles($wpdb, $args);
+/*
+			
+			print_r($widgets->getFeed());
+			*/
+			
+			$args = array();
+			$args['hierarchical'] = "true";
+			$args['taxonomy'] = "post_tag";
+			$defaultTags = new Widgets($args);
+			
+			$args = array();
+			$args['hierarchical'] = "true";
+			$args['taxonomy'] = "category";
+			$defaultCat = new Widgets($args);
+			
+			
+			
+			$filter = array();
+			$filter['id'] = $category_id;
+			$args = array();
+			$args['siteType'] = "blog";
+			$args['selector'] = $filter;
+			
+			$feed= new Tiles($wpdb, $args);
+			
+
 		?>
 	</head>
 	
@@ -34,7 +66,11 @@
 		<header>
 			<div class="container">	
 				<?php include 'html/buildHeader.php'; ?>	
-				<?php include 'html/buildBlogHero.php'; ?>	
+				
+				<?php buildHero("Mit foryouandyourcustomers entwickeln wir uns und für Sie und Ihre Kunden das Multichannel-Business"); ?>
+
+				
+					
 
 			</div>
 		</header>
@@ -53,10 +89,30 @@
 				?>
 			</div>
 			<div id="isotope" class="blogNavi">
-					<?php dynamic_sidebar ('sidebar-1');?>
-
+			
+				<?php $defaultCat->getTaxonomy("cat");?>
+				<?php $defaultTags->getTaxonomy("tag");?>
+				
+				<?php dynamic_sidebar ('sidebar-1');?>
 			</div>
 		</div>
+		<script>
+		
+			$("#showMoreTags").click(function () {
+				if ($("#hiddenTags").is(":hidden")) {
+					$("#hiddenTags").slideDown("slow");
+					$("#showMoreTags").html("Weniger Tags anzeigen");
+		
+					;		
+					} else {
+					$("#hiddenTags").slideUp("slow");
+					$("#showMoreTags").html("Alle Tags anzeigen");
+					}		
+		    });
+
+		</script>
+		
+		
 		
 		<?php include 'footer.php'; ?>
 		

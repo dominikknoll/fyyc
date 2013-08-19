@@ -17,21 +17,20 @@
 			
 			$args = array();
 			$args['title'] = $title;
-			$staticMenschenFeed  = new Tiles($wpdb, $args); //empty
-			
-			$staticMenschenFeed->addFeed($postid, "intro");
-			$staticMenschenFeed->addFeed($postid, "contact");
-			
-			
+			$staticLeistungenFeed  = new Tiles($wpdb, $args); //empty
+	
+			$staticLeistungenFeed->addFeed($postid, "leistungenIntro");
+			$staticLeistungenFeed->addFeed($postid, "contact");
+
 			$args = array();
 			$args['title'] 	  	  = $title;
-			$args['siteType'] 	  = "menschen";
+			$args['siteType'] 	  = "leistungen";
 			$feed			  	  = new Tiles($wpdb, $args);
 			
 			
 			
 
-			//$staticMenschenFeed->addFeed(313, "linkedin");
+			//$staticLeistungenFeed->addFeed(313, "linkedin");
 		?>
 	</head>
 	
@@ -49,8 +48,8 @@
 			<div id="isotope">
 				<?php
 				
-					foreach ($staticMenschenFeed->getTiles() as $index => $value) {
-						$staticMenschenFeed->printTile($index, false);
+					foreach ($staticLeistungenFeed->getTiles() as $index => $value) {
+						$staticLeistungenFeed->printTile($index, false);
 					}
 					
 					foreach ($feed->getTiles() as $index => $value) {

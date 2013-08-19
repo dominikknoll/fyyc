@@ -89,7 +89,7 @@ add_image_size( "personImage", 310, 310, true );
 
 add_image_size( "tileImageRetina", 900, 0, false );
 
-add_image_size( "headerImage", 1280, 0, false );
+add_image_size( "headerImage", 1280, 720, true );
 
 
 
@@ -122,7 +122,8 @@ function create_my_taxonomies() {
             'hierarchical' => true
         )
     );
-}
+    
+    }
 
 add_action( 'init', 'create_my_taxonomies', 0 );
 
@@ -150,22 +151,25 @@ function wpt_save_events_meta($post_id, $post) {
 	
 	//General Information
 	
+	$events_meta_ml = array(); //multilingual
+
+	
 	$events_meta['postTarget']      = $_POST['postTarget'];
 	$events_meta['postPriority']    = $_POST['postPriority'];
 	$events_meta['postOnFrontpage'] = $_POST['postOnFrontpage'];
 	
-	$events_meta['vorname']			= $_POST['vorname'];
-	$events_meta['nachname'] 		= $_POST['nachname'];
-	$events_meta['email']		 	= $_POST['email'];
-	$events_meta['standort'] 	 	= $_POST['standort'];
-	$events_meta['phone'] 	 		= $_POST['phone'];
+	$events_meta_ml['vorname']		= $_POST['vorname'];
+	$events_meta_ml['nachname'] 	= $_POST['nachname'];
+	$events_meta_ml['email']		= $_POST['email'];
+	$events_meta_ml['standort'] 	= $_POST['standort'];
+	$events_meta_ml['phone'] 	 	= $_POST['phone'];
 
 	
 	
-	$events_meta['twitter']			= $_POST['twitter'];
-	$events_meta['instagram'] 		= $_POST['instagram'];
-	$events_meta['linkedin'] 	 	= $_POST['linkedin'];
-	$events_meta['skype'] 	 		= $_POST['skype'];
+	$events_meta_ml['twitter']		= $_POST['twitter'];
+	$events_meta_ml['instagram'] 	= $_POST['instagram'];
+	$events_meta_ml['linkedin']  	= $_POST['linkedin'];
+	$events_meta_ml['skype'] 	 	= $_POST['skype'];
 	
 	$events_meta['funktion']		= $_POST['funktion'];
 	$events_meta['downloads'] 		= $_POST['downloads'];
@@ -179,9 +183,25 @@ function wpt_save_events_meta($post_id, $post) {
 	
 	$events_meta['time']			= $_POST['time'];
 	$events_meta['place'] 			= $_POST['place'];
+	
+	
+	
+	
+	$post_type = $post->post_type;
 
-
+	$enID = icl_object_id($post->ID,$post_type, false, 'en');
+	$deID = icl_object_id($post->ID,$post_type, false, 'de');
+	
 	saveMetadata($events_meta, $post->ID);
+	saveMetadata($events_meta_ml, $enID);
+	saveMetadata($events_meta_ml, $deID);
+	
+	//echo("<br>allg");echo($post->ID);
+	//echo("<br>en");echo(icl_object_id($post->ID,$post_type, false, 'en')); 
+	//echo("<br>de");echo(icl_object_id($post->ID,$post_type, false, 'de')); 
+	
+	
+	
 
 
 }
@@ -208,12 +228,16 @@ function add_events_metaboxes() {
 	add_meta_box('metadatenPriority', 'Priority', 'metadatenPriority', 'veranstaltung', 'normal', 'high');
 	add_meta_box('metadatenPriority', 'Priority', 'metadatenPriority', 'video', 'normal', 'high');
 	add_meta_box('metadatenPriority', 'Priority', 'metadatenPriority', 'galerie', 'normal', 'high');
+	add_meta_box('metadatenPriority', 'Priority', 'metadatenPriority', 'slideshare', 'normal', 'high');
 
 
 
 	
 	add_meta_box('metadatenTeaser', 'Content', 'metadatenTeaser', 'teaser', 'normal', 'high');
 	add_meta_box('metadatenVideo', 'Content', 'metadatenVideo', 'video', 'normal', 'high');
+	add_meta_box('metadatenVideo', 'Content', 'metadatenVideo', 'slideshare', 'normal', 'high');
+	
+	
 	add_meta_box('metadatenVeranstaltung', 'Zeit und Ort', 'metadatenVeranstaltung', 'veranstaltung', 'normal', 'high');
 
 
@@ -240,11 +264,18 @@ function metadatenPriority() {
 	$postPriority        	= get_post_meta($post->ID, 'postPriority', true);
 	$postOnFrontpage        = get_post_meta($post->ID, 'postOnFrontpage', true);
 	
+	if($postOnFrontpage == "on") {$checked = "checked";}
+	echo($checked);
 		echo '
 		    <table style="display: inline-block; padding: 30px;">
 				<tr>
 					<td>Put This post on the following Sites</td>
-					<td><input name="postTarget" value="' . $postTarget  . '"></td>
+					<td>
+					<textarea name="postTarget">' . $postTarget  . '</textarea>
+					
+					
+					
+					</td>
 				</tr>
 				
 				<tr>
@@ -254,7 +285,7 @@ function metadatenPriority() {
 				
 				<tr>
 					<td>This is the Post should Appear on the Mainpage</td>
-					<td><input name="postOnFrontpage" value="' . $postOnFrontpage  . '"></td>
+					<td><input type="checkbox" name="postOnFrontpage" ' . $checked  . '=' . $checked  . '"></td>
 				</tr>
 			</table>
 		'; 
@@ -515,9 +546,10 @@ function wpt_event_posttype() {
 				'name' => __( 'Leistungen' ),
 			),			
 			'public' => true,
-			'supports' => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
+			'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail', 'page-attributes' ),
 			'show_in_nav_menus' => true,			
 			'capability_type' => 'post',
+			'has_archive' => true,
 			'menu_position' => 5,
 			'register_meta_box_cb' => 'add_events_metaboxes'
 
@@ -615,6 +647,23 @@ function wpt_event_posttype() {
 		)
 	);
 	
+	
+	register_post_type( 'slideshare',
+		array(
+			'labels' => array(
+				'name' => __( 'Slideshare' ),
+			),			
+			'public' => true,
+			'supports' => array( 'title', 'thumbnail', 'page-attributes' ),
+			'show_in_nav_menus' => true,			
+			'capability_type' => 'post',
+			'menu_position' => 5,
+			'register_meta_box_cb' => 'add_events_metaboxes'
+		)
+	);
+	
+	
+	
 	register_post_type( 'galerie',
 		array(
 			'labels' => array(
@@ -626,6 +675,19 @@ function wpt_event_posttype() {
 			'capability_type' => 'post',
 			'menu_position' => 5,
 			'register_meta_box_cb' => 'add_events_metaboxes'
+		)
+	);
+	
+	register_post_type( 'spruch',
+		array(
+			'labels' => array(
+				'name' => __( 'Spruch' ),
+			),			
+			'public' => true,
+			'supports' => array( 'title', 'editor'),
+			'show_in_nav_menus' => true,			
+			'capability_type' => 'post',
+			'menu_position' => 5
 		)
 	);
 

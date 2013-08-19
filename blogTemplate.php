@@ -4,11 +4,11 @@
 
 <?php
    /*
-   Template Name: blogtemplate
+   Template Name: blog
    */
 ?>
    
-   
+
 <html>
 	<head>
 		<?php get_header(); wp_head(); ?>
@@ -17,16 +17,46 @@
 
 		
 		<?php			
-			$feed				 = new Tiles($wpdb, "blog");
-			//$staticMenschenFeed  = new Tiles($wpdb); //empty
+		
+			$category_name = get_query_var('cat');
+			echo($category_name);
 			
-			//$staticMenschenFeed->addFeed(313, "intro");
-			//$staticMenschenFeed->addFeed(313, "contact");
-			//$staticMenschenFeed->addFeed(313, "linkedin");
+			$test = get_query_var(true);
+			print_r($test);
+			
+			$filter = array(
+			    "filter" => "category",
+			    0 		 => $category_name,
+			);
+			
+			
+			$args = array();
+			$args['siteType'] = "blog";
+			$args['selector'] = $filter;
+			
+	
+			$feed				 = new Tiles($wpdb, $args);
+			
+			
+			
+			
+			$args = array();
+
+			$args['hierarchical'] = "true";
+			$args['taxonomy'] = "leistungen";
+
+			print_r($args);
+
+			$widgets = new Widgets($args);
+			print_r($widgets->getFeed());
+			
+			
+
 		?>
 	</head>
 	
 	<body>
+
 		<header>
 			<div class="container">	
 				<?php include 'html/buildHeader.php'; ?>	
@@ -49,12 +79,27 @@
 				?>
 			</div>
 			<div id="isotope" class="blogNavi">
-					<?php include 'html/buildBlogNavi.php'; ?>	
+			
+				<div class="item widget">
+					<div class="main">
+						<h3 class="item widget-title">Kategorien</h3>
+							<?php $widgets->printAll(); ?>
+					</div>
+				</div>
+				
+					<div class="item widget">
+					<div class="main">
+						<h3 class="item widget-title">Tags</h3>
+	
+					</div>
+				</div>
+					<?php dynamic_sidebar ('sidebar-1');?>
+					
+
 			</div>
 		</div>
 		
 		<?php include 'footer.php'; ?>
-
 		
 	</body>	
 </html>

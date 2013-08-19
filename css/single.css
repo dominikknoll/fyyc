@@ -1,0 +1,141 @@
+#content {
+  font-size: 10px;
+  color: #444;
+}
+#content * {
+  margin: 0;
+  padding: 0;
+}
+#content p,
+#content li,
+#content th,
+#content td {
+  font-size: 1.6em;
+  line-height: 1.5em;
+}
+#content p {
+  margin-bottom: 1.5em;
+}
+#content ul,
+#content ol {
+  margin-bottom: 2.4em;
+  margin-left: 4em;
+}
+#content h3,
+#content h2,
+#content h1 {
+  font-weight: bold;
+  line-height: 1.5em;
+}
+#content h3 {
+  font-size: 1.6em;
+}
+#content h2 {
+  font-size: 2.4em;
+  padding: .5833em 0 0;
+  margin-bottom: .9166em;
+}
+#content h1 {
+  font-size: 3.2em;
+  padding: 12px 0 0;
+  margin-bottom: .59em;
+}
+#content table {
+  border-collapse: collapse;
+  margin-top: 3.6em;
+  margin-bottom: 3.6em;
+  table-layout: fixed;
+  width: 100%;
+}
+#content th {
+  font-weight: normal;
+}
+#content th,
+#content td {
+  border-top: .0625em solid #ccc;
+  padding: .6875em 1em .75em;
+  vertical-align: top;
+}
+#content .numeric {
+  text-align: right;
+}
+#content td.numeric {
+  font-family: 'Anonymous Pro', monospace;
+}
+#content th[scope="row"] {
+  padding-left: 0;
+  text-align: left;
+  white-space: nowrap;
+}
+#content #sizer {
+  width: 89em;
+  margin: 0 auto;
+  overflow: auto;
+}
+#content .main-content {
+  float: left;
+  width: 51em;
+  padding: 2.4em 2em;
+}
+#content .supplementary-content {
+  float: left;
+  width: 30em;
+  padding: 2.4em 2em;
+}
+#content .banner {
+  margin-bottom: 1.6em;
+}
+#content p:first-of-type {
+  font-style: italic;
+}
+.item .main {
+  padding: 25px 30px 25px 30px;
+}
+.sidebarTop {
+  margin-top: 2px;
+}
+.sidebarTop .metahead {
+  padding-bottom: 15px;
+  line-height: 25px;
+}
+.sidebarTop .metahead a {
+  text-decoration: underline;
+  font-weight: 500;
+}
+.sidebarTop .metahead a:first-child {
+  text-decoration: none;
+}
+.sidebarTop .tagcloud {
+  padding-bottom: 15px;
+}
+.sidebarTop .tagcloud a {
+  background-color: #eeeeee;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 3px 1px;
+  padding: 5px;
+}
+.sidebarShare {
+  padding-bottom: 15px;
+}
+.sidebarShare p {
+  font-weight: 500;
+}
+.sidebarMore .main .otherarticles {
+  font-weight: 500;
+  font-size: 18px;
+  padding-bottom: 15px;
+}
+.sidebarMore .main p {
+  color: #999999;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: solid 1px #cccccc;
+}
+.sidebarMore .main p:last-child {
+  border: none;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}

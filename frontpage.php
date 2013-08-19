@@ -7,15 +7,17 @@
 ?>
    
 <html>
+
+	
 	<head>
 		<?php get_header(); ?>
 		<?php wp_head(); ?>
-		<link href="<?php echo get_stylesheet_directory_uri()?>/frontpage.css" rel="stylesheet" media="screen">
+		<link href="<?php echo get_stylesheet_directory_uri()?>/css/frontpage.css" rel="stylesheet" media="screen">
 
 		<?php			
-
-
-			$feed = new Tiles($wpdb, false, "frontpage");
+			$args = array();
+			$args['siteType'] = "frontpage";
+			$feed = new Tiles($wpdb, $args);
 
 		?>
 	
@@ -33,6 +35,9 @@
 			<div id="isotope">
 				<?php
 					foreach ($feed->getTiles() as $index => $value) {
+						if($index%9 == 0 && $index > 0) {
+							$feed->printSpruch(($index/9)-1);
+						}
 						$feed->printTile($index, false);
 					}
 				?>
